@@ -1,4 +1,0 @@
-mat
-===
-
-Aplikacja mobilna, Android
