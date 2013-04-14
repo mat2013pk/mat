@@ -1,0 +1,7 @@
+INDEX VERSION 1.126+E:\Programowanie\Mobilny Asystent Turystyczny\.metadata\.plugins\org.eclipse.jdt.core
+2671428217.index
+2751296447.index
+4241535477.index
+1572444732.index
+848856923.index
+3465613391.index

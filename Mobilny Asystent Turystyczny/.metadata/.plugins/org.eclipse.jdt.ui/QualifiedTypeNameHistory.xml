@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.GoogleMap"/>
+<fullyQualifiedTypeName name="com.google.android.gms.common.ConnectionResult"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.MapFragment"/>
+<fullyQualifiedTypeName name="android.app.Dialog"/>
+<fullyQualifiedTypeName name="com.google.android.gms.common.GooglePlayServicesUtil"/>
+<fullyQualifiedTypeName name="android.location.LocationListener"/>
+<fullyQualifiedTypeName name="android.location.LocationManager"/>
+<fullyQualifiedTypeName name="android.location.Criteria"/>
+<fullyQualifiedTypeName name="android.location.Location"/>
+<fullyQualifiedTypeName name="com.java.mat.MainActivity"/>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.model.LatLng"/>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.CameraUpdate"/>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.CameraUpdateFactory"/>
+<fullyQualifiedTypeName name="android.view.View.OnLongClickListener"/>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.GoogleMap.OnMapClickListener"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="com.google.android.gms.common.data.Freezable"/>
+<fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
+<fullyQualifiedTypeName name="com.java.mat.R.id"/>
+<fullyQualifiedTypeName name="android.app.FragmentTransaction"/>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.SupportMapFragment"/>
+</qualifiedTypeNameHistroy>
