@@ -22,4 +22,5 @@
 <fullyQualifiedTypeName name="com.java.mat.R.id"/>
 <fullyQualifiedTypeName name="android.app.FragmentTransaction"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.SupportMapFragment"/>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.model.MarkerOptions"/>
 </qualifiedTypeNameHistroy>

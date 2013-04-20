@@ -1,5 +1,9 @@
 package com.java.mat;
 
+import java.util.ArrayList;
+
+import org.w3c.dom.Document;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.data.Freezable;
@@ -10,9 +14,12 @@ import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -28,6 +35,67 @@ import android.view.View.OnLongClickListener;
 public class MainActivity extends FragmentActivity implements LocationListener {
 
 	private GoogleMap googlemap;
+	private GMapV2Direction md = new GMapV2Direction();
+	private ArrayList<MarkerOptions> markers;
+	
+	//konstruktor bezarg.
+	public MainActivity()
+	{
+		markers = new ArrayList<MarkerOptions>();
+	}
+	
+	//dodaje do listy jedn¹ spinkê
+	void setLocation(MarkerOptions marker)
+	{
+		markers.add(marker);
+	}
+	
+	//wyœwietla na mapie pineski z listy
+	void showLocations()
+	{
+		for(int i=0;i<markers.size();i++)
+		{
+			googlemap.addMarker(markers.get(i));
+		}
+	}
+	
+	void showFrends()
+	{
+		
+	}
+	
+	void showRoute(MarkerOptions m1,MarkerOptions m2)
+	{
+		/*googlemap.addPolyline(new PolylineOptions()
+			.add(m1.getPosition(),m2.getPosition())
+			.geodesic(true)
+				);*/
+
+		Document doc = md.getDocument(m1.getPosition(), m2.getPosition(), GMapV2Direction.MODE_DRIVING);
+		ArrayList<LatLng> directionPoint = md.getDirection(doc);
+		PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.RED);
+
+		for(int i = 0 ; i < directionPoint.size() ; i++) {          
+		rectLine.add(directionPoint.get(i));
+		}
+
+		googlemap.addPolyline(rectLine);
+		
+		
+		//googlemap.
+		
+	}
+	
+	//dodaje do listy jedn¹ spinkê z wspó³rzêdne
+	void setLocation(double x,double y,String name)
+	{
+		LatLng position = new LatLng(x,y);
+		MarkerOptions marker = new MarkerOptions();
+		marker.position(position);
+		marker.visible(true);
+		marker.title(name);
+		markers.add(marker);
+	}
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +104,13 @@ public class MainActivity extends FragmentActivity implements LocationListener {
         {
         	setContentView(R.layout.activity_main);
         	setUpMap();
-    
+    		setLocation(52.259,21.020,"Tomek");
+    		setLocation(50.259,20.020,"Mateusz");
+    		setLocation(48.259,20.020,"Waldek");
+    		showLocations();
+    		showRoute(markers.get(0), markers.get(1));
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,9 +179,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		LatLng latlng = new LatLng(location.getLatitude(),location.getLongitude());
 		googlemap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
 		googlemap.animateCamera(CameraUpdateFactory.zoomTo(10));
-	
 	}
-
 
 	@Override
 	public void onProviderDisabled(String provider) {
