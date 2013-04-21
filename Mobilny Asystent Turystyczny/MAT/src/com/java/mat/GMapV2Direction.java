@@ -22,8 +22,11 @@ import android.content.Context;
 import android.util.Log;
 
 public class GMapV2Direction {
-    public final static String MODE_DRIVING = "driving";
-    public final static String MODE_WALKING = "walking";
+    
+    public static enum Mode{
+    	driving,
+    	walking;
+    }
 
     public GMapV2Direction() { }
 
