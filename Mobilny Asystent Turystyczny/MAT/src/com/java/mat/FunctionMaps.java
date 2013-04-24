@@ -16,8 +16,9 @@ public class FunctionMaps {
 	private ArrayList<MarkerOptions> markers;
 	private GMapV2Direction md;
 	private ArrayList<PolylineOptions> routes;
+	private ArrayList<MarkerOptions> places;
 	
-	private GMapV2Places g = new GMapV2Places();
+	private GMapV2Places mp;
 	
 	//konstruktor bezarg.
 	public FunctionMaps()
@@ -25,29 +26,37 @@ public class FunctionMaps {
 		markers = new ArrayList<MarkerOptions>();
 		md = new GMapV2Direction();
 		routes = new ArrayList<PolylineOptions>();
+		places = new ArrayList<MarkerOptions>();
+		mp = new GMapV2Places();
 		
 		//testowe spinki
-       	addLocation(52.259,21.020,"Tomek");
+       	addLocation(50.061664,19.937217,"Tomek");
     	addLocation(50.259,20.020,"Mateusz");
     	addLocation(48.259,20.020,"Waldek");
-    	addRoute(markers.get(0), markers.get(1),Mode.walking);
     	
-    	g.getDocument(markers.get(0).getPosition());
+    	//testowe google places
+    	addPlaces(markers.get(0),"restaurant",1000);
+    	
+    	//testowa trasa
+    	addRoute(markers.get(0), markers.get(1),Mode.walking);
+    	addRoute(places.get(0), markers.get(0), Mode.walking);
+    	
+
 	}
 	
-	//dodaje do listy jedn¹ spinkê
+	//dodaje do listy jednego u¿ytkownika jako spinkê
 	void setLocation(MarkerOptions marker)
 	{
 		markers.add(marker);
 	}
 	
-	//zwraca spinkê o podanym indeksie
-	MarkerOptions getMarker(int index)
+	//zwraca listê u¿ytkowników jako spinki
+	ArrayList<MarkerOptions> getLocations()
 	{
-		return markers.get(index);
+		return markers;
 	}
 	
-	//dodaje do listy jedn¹ spinkê z wspó³rzêdne
+	//dodaje do listy jedego u¿ytkownika wraz z lokalizacj¹
 	void addLocation(double x,double y,String name)
 	{
 		LatLng position = new LatLng(x,y);
@@ -58,19 +67,10 @@ public class FunctionMaps {
 		markers.add(marker);
 	}
 	
-	int getCountLocation()
+	//zwraca trasê 
+	ArrayList<PolylineOptions> getRoutes()
 	{
-		return markers.size();
-	}
-	
-	int getCountRoute()
-	{
-		return routes.size();
-	}
-	
-	PolylineOptions getRoute(int index)
-	{
-		return routes.get(index);
+		return routes;
 	}
 	
 	void updateLocation()
@@ -87,19 +87,27 @@ public class FunctionMaps {
 			
 	}
 	
-	PolylineOptions addRoute(MarkerOptions m1,MarkerOptions m2,Mode mode)
+	//dodaje trasê miêdzy dwoma punktami (spinkami)
+	void addRoute(MarkerOptions m1,MarkerOptions m2,Mode mode)
 	{
 		Document doc = md.getDocument(m1.getPosition(), m2.getPosition(), mode.toString());
-		ArrayList<LatLng> directionPoint = md.getDirection(doc);
-		PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.RED);
-
-		for(int i = 0 ; i < directionPoint.size() ; i++) {          
-		rectLine.add(directionPoint.get(i));
-		}
+		PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.BLUE);
 		
+		rectLine.addAll(md.getDirection(doc));
 		routes.add(rectLine);
-		
-		return rectLine;
+	}
+	
+	//dodaje miejsca z Google Places jako spinki, parametry: lokalizacja zaczepu, nazwa miejsca oraz promieñ wyszukiwania
+	void addPlaces(MarkerOptions m,String placeName, int radius)
+	{
+		Document doc = mp.getDocument(m.getPosition(), placeName, radius);
+		places.addAll(mp.getPlaces(doc));
+	}
+	
+	//zwraca miejsca z Google Places
+	ArrayList<MarkerOptions> gePlaces()
+	{
+		return places;
 	}
 
 }

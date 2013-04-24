@@ -47,17 +47,25 @@ public class MapActivity extends FragmentActivity implements LocationListener {
 	//wyœwietla na mapie pineski z listy
 	void showLocations()
 	{
-		for(int i=0;i<moduleMap.getCountLocation();i++)
+		for(MarkerOptions m : moduleMap.getLocations())
 		{
-			googlemap.addMarker(moduleMap.getMarker(i));
+			googlemap.addMarker(m);
+		}
+	}
+	
+	void showPlaces()
+	{
+		for(MarkerOptions m : moduleMap.gePlaces())
+		{
+			googlemap.addMarker(m);
 		}
 	}
 	
 	void showRoute()
 	{
-		for(int i=0;i<moduleMap.getCountRoute();i++)
+		for(PolylineOptions p : moduleMap.getRoutes())
 		{
-			googlemap.addPolyline(moduleMap.getRoute(i));
+			googlemap.addPolyline(p);
 		}
 	}
 	
@@ -70,6 +78,7 @@ public class MapActivity extends FragmentActivity implements LocationListener {
         	setUpMap();
     		showLocations();
     		showRoute();
+    		showPlaces();
         }
     }
 

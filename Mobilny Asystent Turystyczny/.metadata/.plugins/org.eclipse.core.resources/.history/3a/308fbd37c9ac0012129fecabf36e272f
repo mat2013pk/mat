@@ -1,0 +1,27 @@
+package com.java.mat;
+
+import org.w3c.dom.Document;
+
+import android.util.Log;
+
+import com.google.android.gms.maps.model.LatLng;
+
+public class GMapV2Places {
+	
+	public GMapV2Places() {
+		
+	}
+	
+	 public Document getDocument(LatLng loc) {
+	        String url = "https://maps.googleapis.com/maps/api/place/search/xml?" 
+	                + "location=" + loc.latitude + "," + loc.longitude  
+	                + "&radius=1000" + ""
+	                + "&types=restaurant" + ""
+	                + "&sensor=false" 
+	                + "&key=" + "AIzaSyCbnY791sIlMq_Nufk_Bdp-DdNRu79MGXA";
+	        
+	        Log.i("DurationText",url);
+	        System.out.println(url);
+	        return null;
+	 }
+}
