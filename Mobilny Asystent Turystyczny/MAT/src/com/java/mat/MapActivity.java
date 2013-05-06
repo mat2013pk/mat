@@ -1,85 +1,35 @@
 package com.java.mat;
-
 import java.util.ArrayList;
 
-import org.w3c.dom.Document;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.data.Freezable;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
-import com.java.mat.GMapV2Direction.Mode;
+import com.google.android.gms.maps.model.Marker;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentTransaction;
-import android.graphics.Color;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View.OnLongClickListener;
 
 
 
-public class MapActivity extends FragmentActivity implements LocationListener {
 
-	private GoogleMap googlemap;
-	private FunctionMaps moduleMap;
+public class MapActivity extends FragmentActivity implements OnMarkerClickListener,  OnMapClickListener/* implements LocationListener */{
+
+	Mapa mojaMapa;
+	ConnectionAllert connectrionAllert;
 	
-	//konstruktor bezarg.
-	public MapActivity()
-	{
-		moduleMap = new FunctionMaps();
-	}
-	
-	//wyœwietla na mapie pineski z listy
-	void showLocations()
-	{
-		for(MarkerOptions m : moduleMap.getLocations())
-		{
-			googlemap.addMarker(m);
-		}
-	}
-	
-	void showPlaces()
-	{
-		for(MarkerOptions m : moduleMap.gePlaces())
-		{
-			googlemap.addMarker(m);
-		}
-	}
-	
-	void showRoute()
-	{
-		for(PolylineOptions p : moduleMap.getRoutes())
-		{
-			googlemap.addPolyline(p);
-		}
-	}
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(isGooglePlay())
-        {
-        	setContentView(R.layout.activity_map);
-        	setUpMap();
-    		showLocations();
-    		showRoute();
-    		showPlaces();
-        }
+        setContentView(R.layout.activity_map);
+        mojaMapa = new Mapa(this); 						//obiekt naszej mapy
+        
+        debug();
     }
 
     @Override
@@ -89,86 +39,68 @@ public class MapActivity extends FragmentActivity implements LocationListener {
         return true;
     }
     
-    private boolean isGooglePlay()
+    
+    
+    
+    private void debug()
     {
-    	int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-    	if(status == ConnectionResult.SUCCESS)
+    	try
     	{
-    		return true;
+    	//to zmienic w³¹czyæ w ca³o klas pinezka i mapa referencja do funkcji wykonanej dla lisnera
+    	mojaMapa.getInstancjeMapyGoogle().setOnMarkerClickListener(this); //dodane lisnera na pinezki do mapy
+    	mojaMapa.getInstancjeMapyGoogle().setOnMapClickListener(this); //wlaczenie lisnera na mape
+    	
+    	Pinezki pinezki = mojaMapa.getPinezki();
+    	pinezki.dodajPinezkeDoListy(new LatLng(50.061664,19.937217), "looool");
+		pinezki.dodajPinezkeDoListy(new LatLng(51.061664,19.937217), "looool2");
+		pinezki.dodajPinezkeDoListy(new LatLng(53.061664,19.937217), "looool2","cosik");
+	    Miejsca miejsca = mojaMapa.getMiejsca();
+		miejsca.getPlaces(new LatLng(50.061664,19.937217), "restaurant", 500);
+    	
+    	
+    	Pinezki znojomi = mojaMapa.getZnajomi();
+    	znojomi.dodajPinezkeDoListy(new LatLng(50.045664,19.967217), "Tomek", "jojoj");
+    	znojomi.dodajPinezkeDoListy(new LatLng(50.045664,20.967217), "Mateusz", "dota");
+    	
+    	mojaMapa.getMiejsca().getPlaces(new LatLng(53.061664,19.937217), "restaurant", 10000);
+    	
+    	mojaMapa.odswiezMape();
+    	Log.d("userDebugggg","ilosc miejsc"+mojaMapa.getMiejsca().getIloscMiejsc());
     	}
-    	else
-    	{
-    		((Dialog)GooglePlayServicesUtil.getErrorDialog(status, this, 10)).show();
+    	catch(Exception e){
+    		connectrionAllert = new ConnectionAllert(this);
+    		connectrionAllert.onCreateDialog().show();
     	}
-    	return false;
+    	//trasa
+    	//mojaMapa.getTrasa().wyznaczTrase(znojomi.getPinezka(0), znojomi.getPinezka(1), Trasa.Mode.driving);
+    	
     }
-    private void setUpMap(){
-    	if(googlemap == null)
-    	{
-    		
-    		googlemap = ((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-    		
-    		if(googlemap !=null){
-    			//add some code
-    			googlemap.setMyLocationEnabled(true);
-    			LocationManager lm = (LocationManager)getSystemService(LOCATION_SERVICE);
-    			String provider = lm.getBestProvider(new Criteria(), true);
-    			
-    			if(provider == null){
-    				onProviderDisabled(provider);
-    			}
-    			
-    			Location loc = lm.getLastKnownLocation(provider);
-    			if(loc != null){
-    				onLocationChanged(loc);
-    			}
-    			
-    			googlemap.setOnMapClickListener(OnLongClickMapSettings());
-    		}
-    	}
+    
+    public void odswiezMape()
+    {
+    	mojaMapa.odswiezMape();
     }
-
-
-	private OnMapClickListener OnLongClickMapSettings() {
+ 
+    
+ /********************************debug lisnery na mape i pinezki*******************************//////   
+	@Override
+	public boolean onMarkerClick(final Marker marker) { //tu jakas funcjonalnosc
+		 marker.showInfoWindow();
+		 //////////////////////tu crashhhhhhhhhhhhhhhhhhhh pozycja 
+		 mojaMapa.getTrasa().wyznaczTrase(marker.getPosition(), new LatLng(mojaMapa.getMojaPozycja().getLatitude(), mojaMapa.getMojaPozycja().getLongitude()), Trasa.Mode.driving);
+		 mojaMapa.odswiezMape();
+		 Log.d(marker.getTitle(),"userDeb");
+		return true;
+	}
+	@Override
+	public void onMapClick(LatLng arg0) { 
 		// TODO Auto-generated method stub
 		
-		return new OnMapClickListener() {
-			
-			@Override
-			public void onMapClick(LatLng arg0) {
-				// TODO Auto-generated method stub
-				Log.i(arg0.toString(),"user long clicked");
-			}
-		};
-	}
-
-
-	@Override
-	public void onLocationChanged(Location location) {
-		// TODO Auto-generated method stub
-		LatLng latlng = new LatLng(location.getLatitude(),location.getLongitude());
-		googlemap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
-		googlemap.animateCamera(CameraUpdateFactory.zoomTo(10));
-	}
-
-	@Override
-	public void onProviderDisabled(String provider) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void onProviderEnabled(String provider) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {
-		// TODO Auto-generated method stub
-		
+		//pinezki.wyczyscListePinezek();
+		//mojaMapa.getMiejsca().getPlaces(new LatLng(53.061664,19.937217), "restaurant", 10000);
+		mojaMapa.odswiezMape();
+		Log.d("userDebugggg","ilosc miejsc"+mojaMapa.getMiejsca().getIloscMiejsc());
+		//Log.d("mapa click "+mojaMapa.getPinezki().getIloscPinezek()+"ostatnia pinezka: "+mojaMapa.getPinezki().getPinezka(mojaMapa.getPinezki().getIloscPinezek()-1).getTitle(),"userDeb");
 	}
     
-}
+  }
