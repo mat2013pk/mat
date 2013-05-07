@@ -16,7 +16,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import android.app.AlertDialog;
 import android.graphics.Color;
 import android.util.Log;
 
@@ -236,8 +235,7 @@ public class Trasa {
 	        Document doc = builder.parse(in);
 	        return doc;
 	    } catch (Exception e) {
-	    	
-
+	    	MapActivity.showConnectionAllert();
 	    }
 	    return null;
 	}

@@ -10,49 +10,49 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.support.v4.app.FragmentActivity;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 
 public class ConnectionAllert {
 	
-	MapActivity wskNaActivity;
+	FragmentActivity wskNaActivity;
 	private CharSequence[] options = {"Enable Data Connection", "Enable WiFi Connection"};
 	private boolean[] selections;
-	private TelephonyManager m_telephonyManager;
 	private WifiManager wifiManager;
+	Dialog dialog;
 	
-	public ConnectionAllert(MapActivity wskNaActivity) {
+	public ConnectionAllert(FragmentActivity wskNaActivity) {
 		this.wskNaActivity = wskNaActivity;
 		selections = new boolean[2];
 		wifiManager = (WifiManager)wskNaActivity.getSystemService(Context.WIFI_SERVICE);
-		//setData();
+		haveNetworkConnection();
+		dialog = onCreateDialog();
 	}
 	
-	private void setData()
-	{
-		int dataState = m_telephonyManager.getDataState();
-		if(dataState == 0 || dataState == 3)
-			selections[0] = false;
-		else
-			selections[0] = true;
-		
-		if(wifiManager.isWifiEnabled())
-			selections[1] = true;
-		else
-			selections[1] = false;
-		
+	private void haveNetworkConnection() {
+	    selections[1] = false;
+	    selections[0] = false;
+
+	    ConnectivityManager cm = (ConnectivityManager)wskNaActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+	    NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+	    
+	    if(wifi.isConnectedOrConnecting())
+	    	selections[1]=true;
+	    
+	    if(mobile.isConnectedOrConnecting())
+	    	selections[0]=true;
 	}
 
-	public Dialog onCreateDialog()
+	private Dialog onCreateDialog()
 	{
 		AlertDialog.Builder builder = new AlertDialog.Builder(wskNaActivity);
 	    // Set the dialog title
 	    builder.setTitle("Connection Error")
+	    	.setCancelable(false)
 	    	.setMultiChoiceItems(options, selections, new DialogInterface.OnMultiChoiceClickListener() {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-					// TODO Auto-generated method stub
 					if(which == 0 && isChecked == true)
 						turnOnDataConnection(true, wskNaActivity.getApplicationContext());
 					else if(which == 0 && isChecked == false)
@@ -67,21 +67,24 @@ public class ConnectionAllert {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
-					wskNaActivity.odswiezMape();
+					//wskNaActivity.odswiezMape();
 				}
 			})
 			.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					
 				}
 			});
 			
 	    return builder.create();
 
+	}
+	
+	void showConnectionAllert()
+	{
+		dialog.show();
 	}
 
 	boolean turnOnDataConnection(boolean ON,Context context)
@@ -104,15 +107,5 @@ public class ConnectionAllert {
 	    	 return false;
 	    	 }
 	 }
-	
-	public boolean isOnline() {
-	    ConnectivityManager cm =
-	        (ConnectivityManager) wskNaActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
-	    NetworkInfo netInfo = cm.getActiveNetworkInfo();
-	    if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-	        return true;
-	    }
-	    return false;
-	}
 
 }

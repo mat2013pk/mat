@@ -1,14 +1,10 @@
 package com.java.mat;
-import java.util.ArrayList;
 
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -20,7 +16,7 @@ import android.view.Menu;
 public class MapActivity extends FragmentActivity implements OnMarkerClickListener,  OnMapClickListener/* implements LocationListener */{
 
 	Mapa mojaMapa;
-	ConnectionAllert connectrionAllert;
+	private static ConnectionAllert connectionAllert;
 	
 	
     @Override
@@ -28,7 +24,7 @@ public class MapActivity extends FragmentActivity implements OnMarkerClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         mojaMapa = new Mapa(this); 						//obiekt naszej mapy
-        
+        connectionAllert = new ConnectionAllert(this);
         debug();
     }
 
@@ -44,8 +40,6 @@ public class MapActivity extends FragmentActivity implements OnMarkerClickListen
     
     private void debug()
     {
-    	try
-    	{
     	//to zmienic w³¹czyæ w ca³o klas pinezka i mapa referencja do funkcji wykonanej dla lisnera
     	mojaMapa.getInstancjeMapyGoogle().setOnMarkerClickListener(this); //dodane lisnera na pinezki do mapy
     	mojaMapa.getInstancjeMapyGoogle().setOnMapClickListener(this); //wlaczenie lisnera na mape
@@ -66,19 +60,14 @@ public class MapActivity extends FragmentActivity implements OnMarkerClickListen
     	
     	mojaMapa.odswiezMape();
     	Log.d("userDebugggg","ilosc miejsc"+mojaMapa.getMiejsca().getIloscMiejsc());
-    	}
-    	catch(Exception e){
-    		connectrionAllert = new ConnectionAllert(this);
-    		connectrionAllert.onCreateDialog().show();
-    	}
     	//trasa
     	//mojaMapa.getTrasa().wyznaczTrase(znojomi.getPinezka(0), znojomi.getPinezka(1), Trasa.Mode.driving);
     	
     }
     
-    public void odswiezMape()
+    public static void showConnectionAllert()
     {
-    	mojaMapa.odswiezMape();
+		connectionAllert.showConnectionAllert();
     }
  
     

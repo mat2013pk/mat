@@ -1,14 +1,11 @@
 package com.java.mat;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -16,8 +13,6 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
 import android.util.Log;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -55,7 +50,6 @@ final class Miejsca {
 		znalezoneMiejsca.wyczyscListePinezek();
 	}
 	public void getPlaces (LatLng pozycjaStartowa, String nazwaMiejsca, int promien) 
-			throws ClientProtocolException, IOException, ParserConfigurationException, SAXException 
 	{
 		Document document = getDocument(pozycjaStartowa, nazwaMiejsca, promien);
 		if(document != null) 
@@ -121,8 +115,7 @@ final class Miejsca {
 		}
 	 }
 	
-	private Document getDocument(LatLng pozycjaStartowa, String nazwaMiejsca, int promien) 
-			throws ClientProtocolException, IOException, ParserConfigurationException, SAXException {
+	private Document getDocument(LatLng pozycjaStartowa, String nazwaMiejsca, int promien) {
         String url = "https://maps.googleapis.com/maps/api/place/search/xml?" 
                 + "location=" + pozycjaStartowa.latitude + "," + pozycjaStartowa.longitude  
                 + "&radius=" + String.valueOf(promien)
@@ -130,6 +123,7 @@ final class Miejsca {
                 + "&sensor=false" 
                 + "&key=" + klucz;
 
+        try {
             HttpClient httpClient = new DefaultHttpClient();
             HttpContext localContext = new BasicHttpContext();
             HttpPost httpPost = new HttpPost(url);
@@ -138,6 +132,10 @@ final class Miejsca {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = builder.parse(in);
             return doc;
+        } catch (Exception e) {
+        	MapActivity.showConnectionAllert();
+        }
+        return null;
  }
 	
 
