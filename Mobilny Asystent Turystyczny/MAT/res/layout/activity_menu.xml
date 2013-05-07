@@ -1,0 +1,185 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:shrinkColumns="*"
+    android:stretchColumns="*"
+    android:padding="2dp"
+    tools:context=".MenuActivity" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="20" >
+
+        <Button
+            android:id="@+id/menu.autoryzacja"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/konto"
+            android:paddingTop="10dp"
+            android:text="@string/menu_autoryzacja"
+            android:textColor="@drawable/button_menu_textcolor" />
+
+        <Button
+            android:id="@+id/menu.nawigacja"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/mapa"
+            android:paddingTop="10dp"
+            android:text="@string/menu_nawigacja"
+            android:textColor="@drawable/button_menu_textcolor" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="20" >
+
+        <Button
+            android:id="@+id/menu.grupa"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/grupa"
+            android:paddingTop="10dp"
+            android:text="@string/menu_grupa"
+            android:textColor="@drawable/button_menu_textcolor" />
+
+        <Button
+            android:id="@+id/menu.miejsca"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/miejsca"
+            android:paddingTop="10dp"
+            android:text="@string/menu_miejsca"
+            android:textColor="@drawable/button_menu_textcolor" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="20" >
+
+        <Button
+            android:id="@+id/menu.wiadomosci"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/wiadomosci"
+            android:paddingTop="10dp"
+            android:text="@string/menu_wiadomosci"
+            android:textColor="@drawable/button_menu_textcolor" />
+
+        <Button
+            android:id="@+id/menu.aparat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/aparat"
+            android:paddingTop="10dp"
+            android:text="@string/menu_aparat"
+            android:textColor="@drawable/button_menu_textcolor" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="20" >
+
+        <Button
+            android:id="@+id/menu.sos"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/sos"
+            android:paddingTop="10dp"
+            android:text="@string/menu_sos"
+            android:textColor="@drawable/button_menu_textcolor" />
+
+        <Button
+            android:id="@+id/menu.faq"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/faq"
+            android:paddingTop="10dp"
+            android:text="@string/menu_faq"
+            android:textColor="@drawable/button_menu_textcolor" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="20" >
+
+        <Button
+            android:id="@+id/menu.ustawienia"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/ustawienia"
+            android:paddingTop="10dp"
+            android:text="@string/menu_ustawienia"
+            android:textColor="@drawable/button_menu_textcolor" />
+
+        <Button
+            android:id="@+id/menu.info"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/informacje"
+            android:paddingTop="10dp"
+            android:text="@string/menu_autorzy"
+            android:textColor="@drawable/button_menu_textcolor" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="20" >
+
+        <Button
+            android:id="@+id/menu.wylacz"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/wylacz"
+            android:paddingTop="10dp"
+            android:text="@string/menu_wylacz"
+            android:textColor="@drawable/button_menu_textcolor" />
+
+    </TableRow>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:paddingLeft="220dp"
+        android:text="@string/wersja_app"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="italic" />
+
+</TableLayout>

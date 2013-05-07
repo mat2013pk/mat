@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/nowekonto.imie"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/input"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="@string/TEMP_imie"
+        android:textColor="#000" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/nowekonto.nazwisko"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/input"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="@string/TEMP_nazwisko"
+        android:textColor="#000" />
+
+    <EditText
+        android:id="@+id/nowekonto.mail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textEmailAddress"
+        android:text="@string/TEMP_email"
+        android:background="@drawable/input"
+        android:textColor="#000" />
+
+    <Button
+        android:id="@+id/nowekonto.ok"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/OK"
+        android:textColor="#fff"
+		android:background="@drawable/button_inapp" />
+
+</LinearLayout>
