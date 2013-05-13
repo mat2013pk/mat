@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
-	<item android:state_enabled="false"
+	<item 
+	    android:state_enabled="false"
 		android:drawable="@drawable/zakladka2" />
-	<item android:state_enabled="true"
-		android:state_pressed="true" android:drawable="@drawable/zakladka_aktywna" />
-	<item android:state_enabled="true"
-		android:state_focused="true" android:drawable="@drawable/tlo2" />
-	<item android:state_enabled="true"
+	<item 
+	    android:state_enabled="true"
+		android:state_pressed="true"
+		android:drawable="@drawable/zakladka_aktywna" />
+	<item
+	    android:state_enabled="true"
+		android:state_focused="true"
+		android:drawable="@drawable/tlo2" />
+	<item
+	    android:state_enabled="true"
 		android:drawable="@drawable/tlo2" />
 
 </selector>

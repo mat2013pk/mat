@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/zmienpass.pass1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/input"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:text="@string/TEMP_pass"
+        android:textColor="#000" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/zmienpass.pass2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/input"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:text="@string/TEMP_pass"
+        android:textColor="#000" >
+    </EditText>
+    
+    <Button
+        android:id="@+id/logowanie.ok"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/OK"
+        android:textColor="#fff"
+		android:background="@drawable/button_inapp" />
+
+    
+
+</LinearLayout>

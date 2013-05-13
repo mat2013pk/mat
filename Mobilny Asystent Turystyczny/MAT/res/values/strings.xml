@@ -42,4 +42,6 @@
 	<string name="dane_grupa">grupa</string>
 	<string name="dane_status">status</string>
 	<string name="wersja_app">MAT alpha 0.1</string>
+	<string name="nawigacja_douzytkownika">Prowadź do użytkownika</string>
+	<string name="nawigacja_domiejsca">Prowadź do miejsca</string>
 </resources>

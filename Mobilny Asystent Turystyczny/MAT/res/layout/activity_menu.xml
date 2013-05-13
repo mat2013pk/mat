@@ -22,7 +22,8 @@
             android:drawableTop="@drawable/konto"
             android:paddingTop="10dp"
             android:text="@string/menu_autoryzacja"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
 
         <Button
             android:id="@+id/menu.nawigacja"
@@ -33,7 +34,8 @@
             android:drawableTop="@drawable/mapa"
             android:paddingTop="10dp"
             android:text="@string/menu_nawigacja"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
     </TableRow>
 
     <TableRow
@@ -51,7 +53,8 @@
             android:drawableTop="@drawable/grupa"
             android:paddingTop="10dp"
             android:text="@string/menu_grupa"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
 
         <Button
             android:id="@+id/menu.miejsca"
@@ -62,7 +65,8 @@
             android:drawableTop="@drawable/miejsca"
             android:paddingTop="10dp"
             android:text="@string/menu_miejsca"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
     </TableRow>
 
     <TableRow
@@ -80,7 +84,8 @@
             android:drawableTop="@drawable/wiadomosci"
             android:paddingTop="10dp"
             android:text="@string/menu_wiadomosci"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
 
         <Button
             android:id="@+id/menu.aparat"
@@ -91,7 +96,8 @@
             android:drawableTop="@drawable/aparat"
             android:paddingTop="10dp"
             android:text="@string/menu_aparat"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
     </TableRow>
 
     <TableRow
@@ -109,7 +115,8 @@
             android:drawableTop="@drawable/sos"
             android:paddingTop="10dp"
             android:text="@string/menu_sos"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
 
         <Button
             android:id="@+id/menu.faq"
@@ -120,7 +127,8 @@
             android:drawableTop="@drawable/faq"
             android:paddingTop="10dp"
             android:text="@string/menu_faq"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
     </TableRow>
 
     <TableRow
@@ -138,7 +146,8 @@
             android:drawableTop="@drawable/ustawienia"
             android:paddingTop="10dp"
             android:text="@string/menu_ustawienia"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
 
         <Button
             android:id="@+id/menu.info"
@@ -149,7 +158,8 @@
             android:drawableTop="@drawable/informacje"
             android:paddingTop="10dp"
             android:text="@string/menu_autorzy"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
     </TableRow>
 
     <TableRow
@@ -168,7 +178,8 @@
             android:drawableTop="@drawable/wylacz"
             android:paddingTop="10dp"
             android:text="@string/menu_wylacz"
-            android:textColor="@drawable/button_menu_textcolor" />
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
 
     </TableRow>
 

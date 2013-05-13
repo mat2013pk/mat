@@ -4,15 +4,17 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
+    <!--  
     <style name="AppBaseTheme" parent="android:Theme.Black.NoTitleBar">
         <item name="android:background">@drawable/bg</item>
         <item name="android:textColor">#fff</item>
-    </style>
+    </style>-->
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="android:Theme.Black.NoTitleBar">
         <item name="android:background">@drawable/bg</item>
         <item name="android:textColor">#fff</item>
+        <item name="android:buttonStyle">@style/button</item>
        
     </style>
     
@@ -26,5 +28,10 @@
         <item name="android:background">@drawable/zakladka2</item>
         <item name="android:textColor">#fff</item>
 	</style>
+
+    <style name="button" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_inapp</item>
+       
+    </style>
     
 </resources>

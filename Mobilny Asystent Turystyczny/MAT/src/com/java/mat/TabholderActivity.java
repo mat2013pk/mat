@@ -3,7 +3,7 @@ package com.java.mat;
 import java.util.HashMap;
 
 import com.example.mat.R;
- 
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -56,12 +56,10 @@ public class TabholderActivity extends FragmentActivity implements TabHost.OnTab
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Step 1: Inflate layout
         setContentView(R.layout.activity_tabhost);
-        // Step 2: Setup TabHost
         initialiseTabHost(savedInstanceState);
         if (savedInstanceState != null) {
-            mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab")); //set the tab as per the saved state
+            mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
         }
     }
  
@@ -73,9 +71,6 @@ public class TabholderActivity extends FragmentActivity implements TabHost.OnTab
         super.onSaveInstanceState(outState);
     }
  
-    /**
-     * Step 2: Setup TabHost
-     */
     private void initialiseTabHost(Bundle args) {
         mTabHost = (TabHost)findViewById(android.R.id.tabhost);
         mTabHost.setup();

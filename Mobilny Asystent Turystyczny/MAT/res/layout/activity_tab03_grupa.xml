@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:background="#FF00FF"
-  >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:drawSelectorOnTop="false" >
+        <!--
+        dynamiczne dodawanie elementow do listy:
+        http://stackoverflow.com/questions/4540754/add-dynamically-elements-to-a-listview-android
+        -->
+    </ListView>
+    
+    <Button
+        android:id="@+id/grupa.ok"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="0"
+        android:background="@drawable/button_inapp"
+        android:text="@string/OK"
+        android:textColor="#fff" />
+
+
 </LinearLayout>
