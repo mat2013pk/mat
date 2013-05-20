@@ -44,4 +44,14 @@
 	<string name="wersja_app">MAT alpha 0.1</string>
 	<string name="nawigacja_douzytkownika">Prowadź do użytkownika</string>
 	<string name="nawigacja_domiejsca">Prowadź do miejsca</string>
+	<string name="tak">Tak</string>
+	<string name="nie">Nie</string>
+	<string name="logout_text">Na pewno chcesz się wylogować?</string>
+	<string name="accountdelete_text">Na pewno chcesz usunąć konto?</string>
+	<string name="joingroup_text">Czy chcesz dołączyć do tej grupy?</string>
+	<string name="groupdisconnect_text">Na pewno chcesz wypisać się z grupy?</string>
+	<string name="passgroup_text">Na pewno chcesz przekazać grupę?</string>
+	<string name="blockuser_text">Na pewno chcesz zablokować użytkownika?</string>
+	<string name="groupdelete_text">Na pewno chcesz usunąć grupę?</string>
+	<string name="deletepoint_text">Usunąć punkt trasy?</string>
 </resources>
