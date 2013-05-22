@@ -4,8 +4,6 @@ package com.java.mat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.mat.R;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;

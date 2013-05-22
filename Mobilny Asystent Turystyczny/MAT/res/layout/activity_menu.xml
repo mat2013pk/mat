@@ -183,14 +183,4 @@
 
     </TableRow>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:paddingLeft="220dp"
-        android:text="@string/wersja_app"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="italic" />
-
 </TableLayout>

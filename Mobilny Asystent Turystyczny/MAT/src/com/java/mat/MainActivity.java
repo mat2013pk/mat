@@ -1,7 +1,5 @@
 package com.java.mat;
 
-import com.example.mat.R;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;

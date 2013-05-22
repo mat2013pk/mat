@@ -2,8 +2,6 @@ package com.java.mat;
 
 import java.util.HashMap;
 
-import com.example.mat.R;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

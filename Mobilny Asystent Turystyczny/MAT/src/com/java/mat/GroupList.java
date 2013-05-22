@@ -3,8 +3,6 @@ package com.java.mat;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.example.mat.R;
-
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
