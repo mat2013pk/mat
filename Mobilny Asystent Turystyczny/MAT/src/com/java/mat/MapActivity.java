@@ -4,6 +4,7 @@ import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.java.mat.R;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;

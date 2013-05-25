@@ -1,5 +1,7 @@
 package com.java.mat;
 
+import com.java.mat.R;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
