@@ -17,7 +17,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import android.graphics.Color;
-import android.os.StrictMode;
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;

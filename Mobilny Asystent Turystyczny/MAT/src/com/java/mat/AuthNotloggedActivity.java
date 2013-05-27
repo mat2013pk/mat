@@ -40,19 +40,19 @@ public class AuthNotloggedActivity extends Activity {
 						EditText email = (EditText) findViewById(R.id.logowanie_mail);
 						EditText haslo = (EditText) findViewById(R.id.logowanie_pass);
 						
-						boolean ok = Autoryzacja.Zaloguj(email.getText().toString(), haslo.getText().toString());
+						boolean ok = Autoryzacja.zaloguj(email.getText().toString(), haslo.getText().toString());
 	    				
 						if(libs.Validator.isValidEmail((CharSequence) email.getText()) && ok){
-							Toast t = Toast.makeText(getApplicationContext(), "Zalogowano poprawnie" + email.getText(), Toast.LENGTH_SHORT);
+							Toast t = Toast.makeText(getApplicationContext(), "Zalogowano poprawnie " + email.getText().toString(), Toast.LENGTH_SHORT);
 							t.show();
 							GlobalSettings.getInstance().setUserLoggedStatus(true);
 							GlobalSettings.getInstance().setMail(email.getText().toString());
 							startActivity(new Intent(AuthNotloggedActivity.this, MenuActivity.class));
 						} else if (!ok){
-							Toast t = Toast.makeText(getApplicationContext(), "Niepoprawny email lub haslo" + email.getText(), Toast.LENGTH_SHORT);
+							Toast t = Toast.makeText(getApplicationContext(), "Niepoprawny email lub haslo " + email.getText().toString(), Toast.LENGTH_SHORT);
 							t.show();
 						} else{
-							Toast t = Toast.makeText(getApplicationContext(), "Email nie spelnia walidacji" + email.getText(), Toast.LENGTH_SHORT);
+							Toast t = Toast.makeText(getApplicationContext(), "Email nie spelnia walidacji " + email.getText().toString(), Toast.LENGTH_SHORT);
 							t.show();
 						}
 
@@ -77,12 +77,12 @@ public class AuthNotloggedActivity extends Activity {
 						EditText imie = (EditText) findViewById(R.id.nowekonto_imie);
 						EditText nazwisko = (EditText) findViewById(R.id.nowekonto_nazwisko);
 						EditText email = (EditText) findViewById(R.id.nowekonto_mail);
-						boolean rejestracja = Autoryzacja.Zarejestruj(email.getText().toString(), imie.getText().toString(), nazwisko.getText().toString());
+						boolean rejestracja = Autoryzacja.zarejestruj(email.getText().toString(), imie.getText().toString(), nazwisko.getText().toString());
 						if(rejestracja && libs.Validator.isValidEmail((CharSequence) email.getText())){
-							Toast t = Toast.makeText(getApplicationContext(), "Zarejestrowano poprawnie, na twoj email wyslano haslo" + email.getText(), Toast.LENGTH_SHORT);
+							Toast t = Toast.makeText(getApplicationContext(), "Zarejestrowano poprawnie, na twoj email " + email.getText().toString() + " wyslano haslo ", Toast.LENGTH_SHORT);
 							t.show();
 						} else {
-							Toast t = Toast.makeText(getApplicationContext(), "Nie zarejestrowano poprawnie, email jest w bazie lub jest nieprawid³owy" + email.getText(), Toast.LENGTH_SHORT);
+							Toast t = Toast.makeText(getApplicationContext(), "Nie zarejestrowano poprawnie, email " + email.getText().toString() + "jest w bazie lub jest nieprawid³owy", Toast.LENGTH_SHORT);
 							t.show();
 						}
 					    
