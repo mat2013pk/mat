@@ -17,6 +17,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import android.graphics.Color;
+import android.os.StrictMode;
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -28,10 +29,16 @@ public class Trasa {
 	private GoogleMap mapaGoogle;
 	private ArrayList<PolylineOptions> trasa; //lista lini tworz¹cych trase
 	
+	public void setGoogleMapInstance(GoogleMap instancja)
+	{
+		mapaGoogle = instancja;
+	}
+	
     public static enum Mode{
     	driving,
     	walking;
     }	
+ 
 	public Trasa(GoogleMap wskNaInstancjeGoogleMap)
 	{
 		mapaGoogle = wskNaInstancjeGoogleMap;
@@ -226,6 +233,10 @@ public class Trasa {
 	   // Log.d("userDebbbb",url);
 	    
 	    try {
+	    	// @TODO zapytac od czego tak klasa jest StrictMode i do czego jest potrzebna
+//        	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//
+//        	StrictMode.setThreadPolicy(policy);
 	        HttpClient httpClient = new DefaultHttpClient();
 	        HttpContext localContext = new BasicHttpContext();
 	        HttpPost httpPost = new HttpPost(url);
@@ -235,7 +246,7 @@ public class Trasa {
 	        Document doc = builder.parse(in);
 	        return doc;
 	    } catch (Exception e) {
-	    	MapActivity.showConnectionAllert();
+	    	//MapActivity.showConnectionAllert();
 	    }
 	    return null;
 	}

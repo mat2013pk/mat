@@ -1,29 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:orientation="vertical" >
 
-    
-    <ListView
-        android:id="@+id/listaMiejsca"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" >
-        <!--
-        dynamiczne dodawanie elementow do listy:
-        http://stackoverflow.com/questions/4540754/add-dynamically-elements-to-a-listview-android
-        -->
-    </ListView>
-    
-    <Button
-        android:id="@+id/miejsca.ok"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="0"
-        android:background="@drawable/button_inapp"
-        android:text="@string/OK"
-        android:textColor="#fff" />
+     <TextView
+         android:id="@+id/textView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:padding="10sp"
+         android:text="Opcje wyszukiwania:"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+     <EditText
+         android:id="@+id/promien"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:ems="10"
+         android:padding="10sp"
+         android:hint="Podaj promien wyszukiwania"
+         android:inputType="number" />
+<TextView
+         android:id="@+id/textView2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:padding="10dp"
+         android:textSize="15sp"
+         android:text=" Wyberz kategorię:"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
+     
+     <Spinner
+         android:id="@+id/spinner1"
+         android:layout_width="match_parent"
+         android:padding="10sp"
+         android:layout_height="wrap_content" />
 
-</LinearLayout>
+     <Button
+         android:id="@+id/buttonSzukaj"
+         style="?android:attr/buttonStyleSmall"
+         android:padding="10sp"
+         android:height="50dp"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="Szukaj" />
+
+     <TextView
+         android:id="@+id/wynikiZnalezione"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="TextView" />
+
+ </LinearLayout>

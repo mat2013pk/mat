@@ -54,4 +54,5 @@
 	<string name="blockuser_text">Na pewno chcesz zablokować użytkownika?</string>
 	<string name="groupdelete_text">Na pewno chcesz usunąć grupę?</string>
 	<string name="deletepoint_text">Usunąć punkt trasy?</string>
+
 </resources>

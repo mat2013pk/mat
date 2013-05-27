@@ -2,8 +2,10 @@ package com.java.mat;
 
 import java.io.InputStream;
 
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -13,6 +15,10 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+
+import android.annotation.TargetApi;
+import android.os.Build;
+import android.os.StrictMode;
 import android.util.Log;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -21,15 +27,23 @@ import com.google.android.gms.maps.model.LatLng;
 
 
 
-final class Miejsca {
+@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+final class Miejsca{
 	Pinezki znalezoneMiejsca;
 	GoogleMap wskNaInstancjeGoogleMap;
 	String klucz = "AIzaSyASEwRkZt-0VSm5aPL32rbDD2CwpaZdxlE"; //autoryzacja dla api
+	
+	public void setGoogleMapInstance(GoogleMap instancja)
+	{
+		wskNaInstancjeGoogleMap = instancja;
+		znalezoneMiejsca.setGoogleMapInstance(instancja);
+	}
 	
 	public int getIloscMiejsc()
 	{
 		return znalezoneMiejsca.getIloscPinezek();
 	}
+	
 	public Miejsca(GoogleMap wskNaInstancjeGoogleMap, BitmapDescriptor bitmapa)
 	{
 		this.wskNaInstancjeGoogleMap = wskNaInstancjeGoogleMap;
@@ -51,9 +65,11 @@ final class Miejsca {
 	}
 	public void getPlaces (LatLng pozycjaStartowa, String nazwaMiejsca, int promien) 
 	{
+		Log.d("userDebuggggg","jojojoojoj"+nazwaMiejsca+""+promien);
 		Document document = getDocument(pozycjaStartowa, nazwaMiejsca, promien);
 		if(document != null) 
 		{
+			
 			NodeList listaZnalezonych = document.getElementsByTagName("result");
 			
 			Log.d("userDebuggggg","ile wierszy"+listaZnalezonych.getLength());
@@ -122,21 +138,27 @@ final class Miejsca {
                 + "&types=" + nazwaMiejsca
                 + "&sensor=false" 
                 + "&key=" + klucz;
-
+        
         try {
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpContext localContext = new BasicHttpContext();
-            HttpPost httpPost = new HttpPost(url);
-            HttpResponse response = httpClient.execute(httpPost, localContext);
-            InputStream in = response.getEntity().getContent();
-            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document doc = builder.parse(in);
+        	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        	StrictMode.setThreadPolicy(policy);
+        	
+            HttpClient httpClient = new DefaultHttpClient();Log.d("userDebuggggg",1+"");
+            HttpContext localContext = new BasicHttpContext();Log.d("userDebuggggg",2+"");
+            HttpPost httpPost = new HttpPost(url);Log.d("userDebuggggg",3+"");
+            HttpResponse response = httpClient.execute(httpPost, localContext);Log.d("userDebuggggg",4+"");
+            InputStream in = response.getEntity().getContent();Log.d("userDebuggggg",5+"");
+            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();Log.d("userDebuggggg",6+"");
+            Document doc = builder.parse(in);Log.d("userDebuggggg",7+"");
             return doc;
         } catch (Exception e) {
-        	MapActivity.showConnectionAllert();
+        	//MapActivity.showConnectionAllert();
+        	Log.d("userDebuggggg",e.toString());
         }
         return null;
- }
-	
+	}
 
-}
+		
+	}
+	

@@ -3,6 +3,7 @@ package com.java.mat;
 import com.java.mat.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -37,11 +38,21 @@ public class AuthNotloggedActivity extends Activity {
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 						EditText email = (EditText) findViewById(R.id.logowanie_mail);
-						if(libs.Validator.isValidEmail((CharSequence) email.getText())){
-							Toast t = Toast.makeText(getApplicationContext(), "WYSYLANIE" + email.getText(), Toast.LENGTH_SHORT);
+						EditText haslo = (EditText) findViewById(R.id.logowanie_pass);
+						
+						boolean ok = Autoryzacja.Zaloguj(email.getText().toString(), haslo.getText().toString());
+	    				
+						if(libs.Validator.isValidEmail((CharSequence) email.getText()) && ok){
+							Toast t = Toast.makeText(getApplicationContext(), "Zalogowano poprawnie" + email.getText(), Toast.LENGTH_SHORT);
 							t.show();
-						} else {
-							Toast t = Toast.makeText(getApplicationContext(), "NIE WYSLANO" + email.getText(), Toast.LENGTH_SHORT);
+							GlobalSettings.getInstance().setUserLoggedStatus(true);
+							GlobalSettings.getInstance().setMail(email.getText().toString());
+							startActivity(new Intent(AuthNotloggedActivity.this, MenuActivity.class));
+						} else if (!ok){
+							Toast t = Toast.makeText(getApplicationContext(), "Niepoprawny email lub haslo" + email.getText(), Toast.LENGTH_SHORT);
+							t.show();
+						} else{
+							Toast t = Toast.makeText(getApplicationContext(), "Email nie spelnia walidacji" + email.getText(), Toast.LENGTH_SHORT);
 							t.show();
 						}
 
@@ -58,20 +69,23 @@ public class AuthNotloggedActivity extends Activity {
 			public void onClick(View v) {
 				setContentView(R.layout.activity_nowe_konto);
 				Button send = (Button) findViewById(R.id.nowekonto_ok);
+
 				send.setOnClickListener(new View.OnClickListener() {
-					
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
+						EditText imie = (EditText) findViewById(R.id.nowekonto_imie);
+						EditText nazwisko = (EditText) findViewById(R.id.nowekonto_nazwisko);
 						EditText email = (EditText) findViewById(R.id.nowekonto_mail);
-						if(libs.Validator.isValidEmail((CharSequence) email.getText())){
-							Toast t = Toast.makeText(getApplicationContext(), "WYSYLANIE" + email.getText(), Toast.LENGTH_SHORT);
+						boolean rejestracja = Autoryzacja.Zarejestruj(email.getText().toString(), imie.getText().toString(), nazwisko.getText().toString());
+						if(rejestracja && libs.Validator.isValidEmail((CharSequence) email.getText())){
+							Toast t = Toast.makeText(getApplicationContext(), "Zarejestrowano poprawnie, na twoj email wyslano haslo" + email.getText(), Toast.LENGTH_SHORT);
 							t.show();
 						} else {
-							Toast t = Toast.makeText(getApplicationContext(), "NIE WYSLANO" + email.getText(), Toast.LENGTH_SHORT);
+							Toast t = Toast.makeText(getApplicationContext(), "Nie zarejestrowano poprawnie, email jest w bazie lub jest nieprawid³owy" + email.getText(), Toast.LENGTH_SHORT);
 							t.show();
 						}
-
+					    
 					}
 				});
 			}

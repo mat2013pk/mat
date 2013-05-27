@@ -14,6 +14,7 @@ import android.widget.TabHost.TabContentFactory;
 public class TabholderActivity extends FragmentActivity implements TabHost.OnTabChangeListener {
  
     private TabHost mTabHost;
+    
     private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, TabInfo>();
     private TabInfo mLastTab = null;
  
@@ -27,9 +28,14 @@ public class TabholderActivity extends FragmentActivity implements TabHost.OnTab
              this.clss = clazz;
              this.args = args;
          }
- 
     }
- 
+
+  /*   
+    public Mapa getMojaMapa()
+    {
+    	return mojaMapa;
+    }
+    */
     class TabFactory implements TabContentFactory {
  
         private final Context mContext;
@@ -54,7 +60,7 @@ public class TabholderActivity extends FragmentActivity implements TabHost.OnTab
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabhost);
+        setContentView(R.layout.activity_tabhost);        
         initialiseTabHost(savedInstanceState);
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
@@ -98,7 +104,7 @@ public class TabholderActivity extends FragmentActivity implements TabHost.OnTab
         // Attach a Tab view factory to the spec
         tabSpec.setContent(activity.new TabFactory(activity));
         String tag = tabSpec.getTag();
- 
+
         // Check to see if we already have a fragment for this tab, probably
         // from a previously saved state.  If so, deactivate it, because our
         // initial state is that a tab isn't shown.
@@ -122,7 +128,7 @@ public class TabholderActivity extends FragmentActivity implements TabHost.OnTab
             FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
             if (mLastTab != null) {
                 if (mLastTab.fragment != null) {
-                    ft.detach(mLastTab.fragment);
+                    ft.hide(mLastTab.fragment);// detach(mLastTab.fragment); tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
                 }
             }
             if (newTab != null) {
@@ -131,7 +137,7 @@ public class TabholderActivity extends FragmentActivity implements TabHost.OnTab
                             newTab.clss.getName(), newTab.args);
                     ft.add(R.id.realtabcontent, newTab.fragment, newTab.tag);
                 } else {
-                    ft.attach(newTab.fragment);
+                    ft.show(newTab.fragment);// attach(newTab.fragment); tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
                 }
             }
  

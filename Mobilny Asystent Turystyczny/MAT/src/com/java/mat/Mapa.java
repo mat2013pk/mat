@@ -7,14 +7,15 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.java.mat.R;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 
@@ -22,14 +23,17 @@ import android.support.v4.app.FragmentActivity;
 public class Mapa extends FragmentActivity implements LocationListener{
 	
 	private GoogleMap mapaGoogle;			//referencja do obiektu mapygoogla
-	private FragmentActivity wskNaActivity; //referencja do activity
+	private Fragment wskNaFragment; //referencja do activity
 	private Pinezki pinezki;				//referencja na pinezki
 	private Miejsca miejsca;
 	private Pinezki znajomi; 				//pinezki z pozycja znajomych
 	private Trasa trasa;
+	private InterfejsDlaMapy ustawienia;
 	
 	//zamenc na liste pinezek ktra bêdzie odœwierzana 
 	//trasy wyznaczone lista do wyrysowania
+	
+
 	public Pinezki getZnajomi()
 	{
 		return znajomi;
@@ -54,21 +58,23 @@ public class Mapa extends FragmentActivity implements LocationListener{
 	}
 	
 
-	public void odswiezMape()
+	public void rysujWszystko()
 	{
+		mapaGoogle.clear();
 		//wyrysowanie obiektow na nowo lub dorysowane aktualnych usuniece nie aktualnych
-		pinezki.dodajPinezkiDoMapy();
-		miejsca.dodajMiejscaDoMapy();
-		znajomi.dodajPinezkiDoMapy();
-		trasa.dodajTraseDoMapy();
+		if(ustawienia.pinezki) pinezki.dodajPinezkiDoMapy();
+		if(ustawienia.miejsca) miejsca.dodajMiejscaDoMapy();
+		if(ustawienia.znajomi) znajomi.dodajPinezkiDoMapy();
+		if(ustawienia.trasa) trasa.dodajTraseDoMapy();
 	}
 
+
 	
-	
-	public Mapa(FragmentActivity wskNaActivity)
+	public Mapa(Fragment MapFragment)
 	{
-		this.wskNaActivity = wskNaActivity;
 		
+		this.wskNaFragment = MapFragment;		
+		this.ustawienia = InterfejsDlaMapy.getInstance();
 	    initMapaGoogle();
 	    pinezki = new Pinezki(mapaGoogle); //jeden rodzaj pinezek
 	    miejsca = new Miejsca(mapaGoogle);
@@ -88,16 +94,16 @@ public class Mapa extends FragmentActivity implements LocationListener{
 	
 	private void initMapaGoogle()
 	{
-		if(isGooglePlay(wskNaActivity)){
+		if(isGooglePlay(wskNaFragment)){
 			if(mapaGoogle == null) //setup mapy
 	    	{
-	    		
-				mapaGoogle = ((SupportMapFragment)wskNaActivity.getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+				mapaGoogle = ((SupportMapFragment)wskNaFragment).getMap();
+				//mapaGoogle = ((SupportMapFragment)wskNaFragment.getSupportFragmentManager().findFragmentById(R.id.mapa)).getMap();
 	    		
 	    		if(mapaGoogle !=null){
 	    			//add some code
 	    			mapaGoogle.setMyLocationEnabled(true);
-	    			LocationManager lm = (LocationManager)wskNaActivity.getSystemService(LOCATION_SERVICE);
+	    			LocationManager lm = (LocationManager)wskNaFragment.getActivity().getSystemService(Activity.LOCATION_SERVICE);
 	    			String provider = lm.getBestProvider(new Criteria(), true);
 	    			
 		    			if(provider == null){
@@ -112,16 +118,16 @@ public class Mapa extends FragmentActivity implements LocationListener{
 	    	}
 		}
 	}
-	private boolean isGooglePlay(FragmentActivity wskNaActivity)
+	private boolean isGooglePlay(Fragment wskNaFragment)
     {
-    	int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(wskNaActivity);
+    	int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(wskNaFragment.getActivity());
     	if(status == ConnectionResult.SUCCESS)
     	{
     		return true;
     	}
     	else
     	{
-    		((Dialog)GooglePlayServicesUtil.getErrorDialog(status, wskNaActivity, 10)).show();
+    		((Dialog)GooglePlayServicesUtil.getErrorDialog(status, wskNaFragment.getActivity(), 10)).show();
     	}
     	return false;
     }

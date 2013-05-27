@@ -3,21 +3,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+      
+      <TextView
+       android:id="@+id/wyswietlanie"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:padding="10sp"
+       android:textSize="20sp"
+       android:text="Co wyświetlić:"
+       android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/nawigacja.prowadzdouzytkownika"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/button_inapp"
-        android:text="@string/nawigacja_douzytkownika"
-        android:textColor="#fff" />
+    <CheckBox
+        android:id="@+id/chmiejsca"
+        android:layout_width="wrap_content"
+        android:checked="true"
+        android:layout_height="wrap_content"
+        android:text=" Mejsca" />
 
-    <Button
-        android:id="@+id/nawigacja.prowadzdomiejsca"
+    <CheckBox
+        android:id="@+id/chgrupa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text=" Grupa" />
+
+    <CheckBox
+        android:id="@+id/chpinezki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text=" Moje pinezki" />
+
+    <CheckBox
+        android:id="@+id/chtrasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text=" Trasa" />
+
+  
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/button_inapp"
-        android:text="@string/nawigacja_domiejsca"
-        android:textColor="#fff" />
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        <ToggleButton
+	        android:id="@+id/toggleButton1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="ToggleButton" />
+        <TextView
+         android:id="@+id/onoffwyznaczanietrasy"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:padding="10sp"
+         android:textSize="16sp"
+         android:text="Włącz/wyłącz wyznaczanie trasy"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>

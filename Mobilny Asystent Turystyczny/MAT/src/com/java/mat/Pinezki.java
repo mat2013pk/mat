@@ -13,6 +13,11 @@ final class Pinezki{
 	private GoogleMap mapaGoogle;
 	private BitmapDescriptor bitmapa;
 	
+	public void setGoogleMapInstance(GoogleMap instancja)
+	{
+		mapaGoogle = instancja;
+	}
+	
 	public Pinezki(GoogleMap wskNaInstancjeGoogleMap, BitmapDescriptor bitmapa)
 	{
 		mapaGoogle = wskNaInstancjeGoogleMap;
