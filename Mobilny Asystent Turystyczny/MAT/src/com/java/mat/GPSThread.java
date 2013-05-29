@@ -9,11 +9,27 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class GPSThread implements Runnable {
-	private ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+	private ScheduledExecutorService executor;
+	private boolean send;
+	private static GPSThread gpsThread = null;
+	
+	private GPSThread(){
+		executor = Executors.newSingleThreadScheduledExecutor();
+		send = true;
+	}
+	
+	public static GPSThread getInstance(){
+		if(gpsThread==null){
+			gpsThread = new GPSThread();
+		} 
+		return gpsThread;
+	}
 	
 	@Override
 	public void run() {
-		sendGPSLocation();
+		if(isSend()){
+			sendGPSLocation();
+		}
 	}
 
 	/**
@@ -34,6 +50,14 @@ public class GPSThread implements Runnable {
 
 	public ScheduledExecutorService getExecutor() {
 		return executor;
+	}
+
+	public boolean isSend() {
+		return send;
+	}
+
+	public void setSend(boolean send) {
+		this.send = send;
 	}
 
 }

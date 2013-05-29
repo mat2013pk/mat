@@ -1,5 +1,7 @@
 package com.java.mat;
 
+import java.util.concurrent.TimeUnit;
+
 import com.java.mat.R;
 
 import android.app.Activity;
@@ -47,6 +49,9 @@ public class AuthNotloggedActivity extends Activity {
 							t.show();
 							GlobalSettings.getInstance().setUserLoggedStatus(true);
 							GlobalSettings.getInstance().setMail(email.getText().toString());
+							GPSThread gps = GPSThread.getInstance();
+							gps.setSend(true);
+							gps.getExecutor().scheduleAtFixedRate(gps, 0, 20, TimeUnit.SECONDS);
 							startActivity(new Intent(AuthNotloggedActivity.this, MenuActivity.class));
 						} else if (!ok){
 							Toast t = Toast.makeText(getApplicationContext(), "Niepoprawny email lub haslo " + email.getText().toString(), Toast.LENGTH_SHORT);

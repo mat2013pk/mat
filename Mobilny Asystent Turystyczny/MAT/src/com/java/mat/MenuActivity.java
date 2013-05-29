@@ -3,8 +3,6 @@ package com.java.mat;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -58,8 +56,6 @@ public class MenuActivity extends Activity {
 				if(GlobalSettings.getInstance().getUserLoggingStatus() == false)
 					startActivity(new Intent(MenuActivity.this, AuthNotloggedActivity.class));
 				else{
-					GPSThread gps = new GPSThread();
-					gps.getExecutor().scheduleAtFixedRate(gps, 0, 20, TimeUnit.SECONDS);
 					startActivity(new Intent(MenuActivity.this, AuthLoggedActivity.class));
 				}
 			}

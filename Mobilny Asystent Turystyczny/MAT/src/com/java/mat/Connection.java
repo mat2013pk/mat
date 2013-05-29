@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class Connection {
 	/**
-	 * Function return JsonObject
+	 * Function return JsonObject from server
 	 * @param url to server
 	 * @return JsonObject
 	 */
