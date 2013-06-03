@@ -1,8 +1,13 @@
 package com.java.mat;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -10,7 +15,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
 
 public class Connection {
 	/**
@@ -38,12 +47,50 @@ public class Connection {
 			doc = json.getString("code");
 	       
 	    } catch (Exception e) {
+	    	Log.e("KOD", "kod nie zero - exception");
 	    	return null;
 	    }
 	    if(Integer.parseInt(doc) == 0){
 	    	return json;
 	    }else{
+	    	Log.e("KOD", "kod nie zero");
 	    	return null;
 		}
+	}
+	
+	public static ArrayList<JSONObject> connectToServerGetArray(String url2){
+	    ArrayList<JSONObject> items = new ArrayList<JSONObject>();
+	 
+	    try {
+	    	
+	        URL url = new URL(url2);
+	        HttpURLConnection urlConnection =
+	            (HttpURLConnection) url.openConnection();
+	        urlConnection.setRequestMethod("GET");
+	        urlConnection.connect();
+	                    // gets the server json data
+	        BufferedReader bufferedReader =
+	            new BufferedReader(new InputStreamReader(
+	                    urlConnection.getInputStream()));		
+	            String next;
+	            while ((next = bufferedReader.readLine()) != null){
+	                JSONArray ja = new JSONArray(next);
+	 
+	                for (int i = 0; i < ja.length(); i++) {
+	                    JSONObject jo = (JSONObject) ja.get(i);
+	                    items.add(jo);
+	                }
+	            }
+	        } catch (MalformedURLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (JSONException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	        return items;
 	}
 }

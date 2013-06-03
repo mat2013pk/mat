@@ -1,8 +1,8 @@
 package message;
 
 public interface IMessage {
-	// Zwraca tekst wiadomoœci
-	String getMsg();
+	// Zwraca obiekt wiadomosci
+	Msg getMsg();
 
 	// Zwraca adres obrazka
 	String getFile();

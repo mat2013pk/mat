@@ -57,5 +57,8 @@
 	<string name="wiadomosc1">wiadomosc 1</string>
 	<string name="wiadomosc2">wiadomosc 2</string>
 	<string name="wiadomosc3">wiadomosc 3</string>
+	<string name="create_group">Utwórz grupę</string>
+	<string name="join_group">Dołącz do grupy</string>
+	<string name="TMP_group_name">nazwa grupy</string>
 
 </resources>

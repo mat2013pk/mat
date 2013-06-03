@@ -5,12 +5,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+
+import com.java.mat.Connection;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 
 public class Group implements IGroup {
@@ -36,7 +40,7 @@ public class Group implements IGroup {
 		resetCode();
 		
 		//przewodnik nowej grupy jest usuwany ze starej 
-		delUserFromGroup(key, email, email);
+		//delUserFromGroup(key, email, email);
 		
 		// to kodowanie jest potrzebne gdy w gecie s¹ znaki specjalne np. spacje
 		try {
@@ -53,7 +57,6 @@ public class Group implements IGroup {
 		// do testowania
 		// uri = "http://mat.sofect.com/server.php?key=412fg68kw378&function=createGroup&email=dominik@gmail.com&groupname=testowa&groupPassword=tajnne";
 		// uri = "https://www.googleapis.com/plus/v1/people/114827005039421548109";
-		
 		return useURI(uri);
 	}
 	
@@ -63,7 +66,7 @@ public class Group implements IGroup {
 		resetCode();
 		
 		//u¿ytkownik przed dodaniem do nowej grupy jest usuwany ze starej 
-		delUserFromGroup(key, emailAdd, emailAdd);
+		//delUserFromGroup(key, emailAdd, emailAdd);
 		
 		// to kodowanie jest potrzebne gdy w gecie s¹ znaki specjalne np. spacje
 		try {
@@ -110,4 +113,31 @@ public class Group implements IGroup {
 			return e.getMessage();
 		}
 	}
+
+	@Override
+	public ArrayList<JSONObject> getListGroup(String key, String email) {
+			resetCode();
+						
+			ArrayList<JSONObject> groupList = new ArrayList<JSONObject>();
+
+			uri = "http://mat.sofect.com/server.php?" + "key=" + key
+					+ "&function=getGroupUsers" + "&email=" + email;
+//			Log.e("uri", uri);
+			
+			groupList = Connection.connectToServerGetArray(uri);
+			if(groupList.size() > 1){
+				groupList.remove(groupList.get(0));
+				code = "0";
+			}
+//			String rozmiar = "" + groupList.size();
+//			try {
+//				Log.e("2 funkcja", (groupList.get(3).getString("name")).toString());
+//				Log.e("Rozmiar", rozmiar);
+//			} catch (JSONException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			return groupList;
+	}
+
 }

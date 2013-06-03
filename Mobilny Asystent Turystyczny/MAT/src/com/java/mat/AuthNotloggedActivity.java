@@ -2,6 +2,9 @@ package com.java.mat;
 
 import java.util.concurrent.TimeUnit;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.java.mat.R;
 
 import android.app.Activity;
@@ -49,6 +52,7 @@ public class AuthNotloggedActivity extends Activity {
 							t.show();
 							GlobalSettings.getInstance().setUserLoggedStatus(true);
 							GlobalSettings.getInstance().setMail(email.getText().toString());
+							GlobalSettings.getInstance().setGuardMail(getGuardMail());
 							GPSThread gps = GPSThread.getInstance();
 							gps.setSend(true);
 							gps.getExecutor().scheduleAtFixedRate(gps, 0, 20, TimeUnit.SECONDS);
@@ -61,6 +65,21 @@ public class AuthNotloggedActivity extends Activity {
 							t.show();
 						}
 
+					}
+					
+					private String getGuardMail(){
+						String url = GlobalSettings.getInstance().getHost()+ "&function=getMailGuide&email="
+								+GlobalSettings.getInstance().getHost();
+					    String mail = null;
+					    JSONObject data = Connection.connectToServer(url);
+						if(!(data == null)){
+							try {
+								mail = data.getString("email");
+							} catch (JSONException e) {
+								e.printStackTrace();
+							}
+						};
+						return mail;
 					}
 				});
 			}

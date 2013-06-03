@@ -5,47 +5,39 @@
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/logowanie.mail"
+        android:id="@+id/action_group.name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/input"
         android:ems="10"
         android:gravity="center"
         android:inputType="textEmailAddress"
-        android:text="@string/TEMP_email"
+        android:text="@string/TMP_group_name"
         android:textColor="#000" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/logowanie.pass"
+        android:id="@+id/action_group.password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/input"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPassword"
-        android:text="@string/TEMP_pass"
+        android:text="@string/TEMP_email"
         android:textColor="#000" >
 
         <requestFocus />
     </EditText>
 
     <Button
-        android:id="@+id/logowanie.ok"
+        android:id="@+id/action_group.ok"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/button_inapp"
         android:text="@string/OK"
-        android:textColor="#fff" />
-
-    <Button
-        android:id="@+id/logowanie.przypomnij"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/button_inapp"
-        android:text="@string/przypomnij_haslo"
         android:textColor="#fff" />
 
 </LinearLayout>

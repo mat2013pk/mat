@@ -112,11 +112,13 @@ public class AuthLoggedActivity extends Activity {
 					TextView tv_mail = (TextView) findViewById(R.id.moje_dane_mail);
 					TextView tv_grupa = (TextView) findViewById(R.id.moje_dane_grupa);
 					TextView tv_status = (TextView) findViewById(R.id.moje_dane_status);
+					TextView tv_guard_mail = (TextView) findViewById(R.id.moje_dane_przewodnik_mail);
 					try {
 						tv_imie_i_nazwisko.setText(data.getString("name") + " " + data.getString("surname"));
 						tv_mail.setText(GlobalSettings.getInstance().getMail());
 						tv_grupa.setText("Grupa: " + data.getString("groupName"));
 						tv_status.setText("Status: " + data.getString("status"));
+						tv_guard_mail.setText(GlobalSettings.getInstance().getGuardMail());
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

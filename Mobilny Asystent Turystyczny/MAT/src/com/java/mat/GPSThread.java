@@ -29,6 +29,8 @@ public class GPSThread implements Runnable {
 	public void run() {
 		if(isSend()){
 			sendGPSLocation();
+		} else {
+			executor.shutdown();
 		}
 	}
 
