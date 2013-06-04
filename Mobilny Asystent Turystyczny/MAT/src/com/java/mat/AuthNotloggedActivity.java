@@ -53,9 +53,11 @@ public class AuthNotloggedActivity extends Activity {
 							GlobalSettings.getInstance().setUserLoggedStatus(true);
 							GlobalSettings.getInstance().setMail(email.getText().toString());
 							GlobalSettings.getInstance().setGuardMail(getGuardMail());
-							GPSThread gps = GPSThread.getInstance();
-							gps.setSend(true);
-							gps.getExecutor().scheduleAtFixedRate(gps, 0, 20, TimeUnit.SECONDS);
+							new GPSThread(AuthNotloggedActivity.this);
+//							GPSThread gps = GPSThread.getInstance();
+//							gps.setSend(true);
+//							gps.getExecutor().scheduleAtFixedRate(gps, 0, 20, TimeUnit.SECONDS);
+							
 							startActivity(new Intent(AuthNotloggedActivity.this, MenuActivity.class));
 						} else if (!ok){
 							Toast t = Toast.makeText(getApplicationContext(), "Niepoprawny email lub haslo " + email.getText().toString(), Toast.LENGTH_SHORT);

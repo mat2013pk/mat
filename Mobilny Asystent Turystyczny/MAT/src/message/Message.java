@@ -312,10 +312,4 @@ public class Message implements IMessage {
 		return null;
 	}
 
-	@Override
-	public String recvMsgs(String key, String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -42,7 +42,6 @@ public class AuthLoggedActivity extends Activity {
 					public void onClick(View v) {
 						GlobalSettings.getInstance().setMail("");
 						GlobalSettings.getInstance().setUserLoggedStatus(false);
-						GPSThread.getInstance().setSend(false);
 						startActivity(new Intent(AuthLoggedActivity.this, MenuActivity.class));
 					}
 				});

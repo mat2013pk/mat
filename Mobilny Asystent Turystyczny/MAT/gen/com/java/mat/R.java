@@ -41,12 +41,13 @@ public final class R {
         public static final int tlo2=0x7f020011;
         public static final int ustawienia=0x7f020012;
         public static final int wiadomosci=0x7f020013;
-        public static final int wylacz=0x7f020014;
-        public static final int zakladka=0x7f020015;
-        public static final int zakladka2=0x7f020016;
-        public static final int zakladka2_pressed=0x7f020017;
-        public static final int zakladka_aktywna=0x7f020018;
-        public static final int zakladka_pressed=0x7f020019;
+        public static final int wiadomosci_new=0x7f020014;
+        public static final int wylacz=0x7f020015;
+        public static final int zakladka=0x7f020016;
+        public static final int zakladka2=0x7f020017;
+        public static final int zakladka2_pressed=0x7f020018;
+        public static final int zakladka_aktywna=0x7f020019;
+        public static final int zakladka_pressed=0x7f02001a;
     }
     public static final class id {
         public static final int accountdelete_n=0x7f080042;

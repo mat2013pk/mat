@@ -5,15 +5,16 @@ public final class GlobalSettings {
     private final static GlobalSettings ourInstance = new GlobalSettings();
     
     /* private ingredients section */
-    private boolean logged = true;
+    private boolean logged = false;
     private boolean roaming = false;
     private boolean compression = true;
     private boolean showSth = false;
+    private boolean messageStatus = false;
     private int visibilityRadius = 0;
     private final String host = "http://mat.sofect.com/server.php?key=412fg68kw378";
     private final String secretKey = "412fg68kw378";
     private String mail = "k@k.com";
-    private static String guardMail = "k@k.com";
+    private String guardMail = "k@k.com";
     
     /* getter/setter section */
     public boolean getUserLoggingStatus(){
@@ -76,6 +77,12 @@ public final class GlobalSettings {
 		return guardMail;
 	}
 	public void setGuardMail(String guardMail) {
-		GlobalSettings.guardMail = guardMail;
+		this.guardMail = guardMail;
+	}
+	public boolean isMessageStatus() {
+		return messageStatus;
+	}
+	public void setMessageStatus(boolean messageStatus) {
+		this.messageStatus = messageStatus;
 	}
 }

@@ -17,5 +17,5 @@ public interface IMessage {
 			String filePath, Boolean compression);
 	
 	// Zwraca kod powodzenia operacji j.w.
-	String recvMsgs(String key, String email);
+	String recvMsg(String key, String email);
 }

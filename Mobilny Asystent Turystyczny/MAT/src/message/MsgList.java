@@ -73,7 +73,7 @@ public class MsgList {
 		return tmp;
 	}
 
-	// funkcja usówaj¹ca z listy wiadomoœæ o podanym indexie z listy, jeœli
+	// funkcja usuwaj¹ca z listy wiadomoœæ o podanym indexie z listy, jeœli
 	// zosta³a usuniêta zwracane 0, jeœli nie zosta³a znaleziona zwracane jest
 	// -1
 	public int rmvMsgByIndex(int id) {
