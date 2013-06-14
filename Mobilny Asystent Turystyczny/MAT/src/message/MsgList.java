@@ -3,15 +3,18 @@ package message;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.util.Log;
+
 public class MsgList {
 	// Klasa przechowuj¹ca listê wiadomoœæi oraz metody do jej obs³ugi
 	private int last_index, last_index_used;
 
-	private List<Msg> msg = new ArrayList<Msg>();
+	private ArrayList<Msg> msg;
 
 	public MsgList() {
 		last_index = -1;
 		last_index_used = -1;
+		msg = new ArrayList<Msg>();
 	}
 
 	// funkcja zwraca obiekt ostatniej wiadomoœci, która nie zosta³a jeszcze
@@ -38,6 +41,7 @@ public class MsgList {
 	public void additem(String text, String addres) {
 		last_index++;
 		Msg tmp = new Msg(last_index, text, addres);
+		Log.e("add", "Dodaje wiadomosc");
 		msg.add(tmp);
 	}
 
@@ -65,11 +69,14 @@ public class MsgList {
 
 	// funkcja zwracaj¹ca ca³¹ listê obiektów przechowuj¹cych wiadomoœci, w
 	// postaci tablicy tych obiektów
-	public Msg[] getMsgAll() {
-		Msg tmp[] = new Msg[msg.size()];
+	public ArrayList<Msg> getMsgAll() {
+		ArrayList<Msg> tmp = new ArrayList<Msg>();
+		Log.e("ILOSC WIADOMOSCI MSG:", " " + msg.size());
 		for (int i = 0; i < msg.size(); i++) {
-			tmp[i] = msg.get(i);
+			//tmp[i] = msg.get(i);
+			tmp.add( msg.get(i));
 		}
+		Log.e("ILOSC WIADOMOSCI TMP:", " " + tmp.size());
 		return tmp;
 	}
 

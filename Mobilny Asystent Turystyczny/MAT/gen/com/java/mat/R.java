@@ -50,36 +50,36 @@ public final class R {
         public static final int zakladka_pressed=0x7f02001a;
     }
     public static final class id {
-        public static final int accountdelete_n=0x7f080042;
-        public static final int accountdelete_y=0x7f080041;
+        public static final int accountdelete_n=0x7f080043;
+        public static final int accountdelete_y=0x7f080042;
         public static final int action_group_name=0x7f080000;
         public static final int action_group_ok=0x7f080002;
         public static final int action_group_password=0x7f080001;
-        public static final int action_settings=0x7f080051;
-        public static final int blockuser_n=0x7f080044;
-        public static final int blockuser_y=0x7f080043;
+        public static final int action_settings=0x7f080052;
+        public static final int blockuser_n=0x7f080045;
+        public static final int blockuser_y=0x7f080044;
         public static final int buttonSzukaj=0x7f08003d;
         public static final int chgrupa=0x7f080033;
         public static final int chmiejsca=0x7f080032;
         public static final int chpinezki=0x7f080034;
         public static final int chtrasa=0x7f080035;
-        public static final int deletepoint_n=0x7f080046;
-        public static final int deletepoint_y=0x7f080045;
+        public static final int deletepoint_n=0x7f080047;
+        public static final int deletepoint_y=0x7f080046;
         public static final int group_create=0x7f080009;
         public static final int group_join=0x7f08000a;
         public static final int group_list=0x7f08000b;
-        public static final int groupdelete_n=0x7f080048;
-        public static final int groupdelete_y=0x7f080047;
-        public static final int groupdisconnect_n=0x7f08004a;
-        public static final int groupdisconnect_y=0x7f080049;
+        public static final int groupdelete_n=0x7f080049;
+        public static final int groupdelete_y=0x7f080048;
+        public static final int groupdisconnect_n=0x7f08004b;
+        public static final int groupdisconnect_y=0x7f08004a;
         public static final int grupa_ok=0x7f080038;
         public static final int imageView1=0x7f080010;
-        public static final int joingroup_n=0x7f08004c;
-        public static final int joingroup_y=0x7f08004b;
+        public static final int joingroup_n=0x7f08004d;
+        public static final int joingroup_y=0x7f08004c;
         public static final int konto_logowanie=0x7f080003;
         public static final int konto_nowe=0x7f080004;
-        public static final int logout_n=0x7f08004e;
-        public static final int logout_y=0x7f08004d;
+        public static final int logout_n=0x7f08004f;
+        public static final int logout_y=0x7f08004e;
         public static final int logowanie_mail=0x7f08000c;
         public static final int logowanie_ok=0x7f08000e;
         public static final int logowanie_pass=0x7f08000d;
@@ -107,8 +107,8 @@ public final class R {
         public static final int nowekonto_nazwisko=0x7f08002a;
         public static final int nowekonto_ok=0x7f08002c;
         public static final int onoffwyznaczanietrasy=0x7f080037;
-        public static final int passgroup_n=0x7f080050;
-        public static final int passgroup_y=0x7f08004f;
+        public static final int passgroup_n=0x7f080051;
+        public static final int passgroup_y=0x7f080050;
         public static final int progressBar1=0x7f080011;
         public static final int promien=0x7f08003a;
         public static final int realtabcontent=0x01010000;
@@ -125,14 +125,15 @@ public final class R {
         public static final int textView1=0x7f080039;
         public static final int textView2=0x7f08003b;
         public static final int toggleButton1=0x7f080036;
+        public static final int wiadomosci_lista=0x7f08003f;
         public static final int wynikiZnalezione=0x7f08003e;
         public static final int wyswietlanie=0x7f080031;
         public static final int zalogowany_mojedane=0x7f080005;
         public static final int zalogowany_usunkonto=0x7f080008;
         public static final int zalogowany_wyloguj=0x7f080007;
         public static final int zalogowany_zmienhaslo=0x7f080006;
-        public static final int zmienpass_pass1=0x7f08003f;
-        public static final int zmienpass_pass2=0x7f080040;
+        public static final int zmienpass_pass1=0x7f080040;
+        public static final int zmienpass_pass2=0x7f080041;
     }
     public static final class layout {
         public static final int activity_action_group=0x7f030000;
@@ -154,15 +155,16 @@ public final class R {
         public static final int activity_tab03_grupa=0x7f030010;
         public static final int activity_tab04_miejsca=0x7f030011;
         public static final int activity_tabhost=0x7f030012;
-        public static final int activity_zmien_haslo=0x7f030013;
-        public static final int dialog_accountdelete=0x7f030014;
-        public static final int dialog_blockuser=0x7f030015;
-        public static final int dialog_deletepoint=0x7f030016;
-        public static final int dialog_groupdelete=0x7f030017;
-        public static final int dialog_groupdisconnect=0x7f030018;
-        public static final int dialog_joingroup=0x7f030019;
-        public static final int dialog_logout=0x7f03001a;
-        public static final int dialog_passgroup=0x7f03001b;
+        public static final int activity_wiadomosci=0x7f030013;
+        public static final int activity_zmien_haslo=0x7f030014;
+        public static final int dialog_accountdelete=0x7f030015;
+        public static final int dialog_blockuser=0x7f030016;
+        public static final int dialog_deletepoint=0x7f030017;
+        public static final int dialog_groupdelete=0x7f030018;
+        public static final int dialog_groupdisconnect=0x7f030019;
+        public static final int dialog_joingroup=0x7f03001a;
+        public static final int dialog_logout=0x7f03001b;
+        public static final int dialog_passgroup=0x7f03001c;
     }
     public static final class menu {
         public static final int main=0x7f070000;

@@ -97,11 +97,12 @@ public class MenuActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				if (GlobalSettings.getInstance().isMessageStatus()){
-					v.setBackgroundColor(Color.RED);
-				}else {
-					v.setBackgroundColor(Color.LTGRAY);
-				}
+				//if (GlobalSettings.getInstance().isMessageStatus()){
+				//	v.setBackgroundColor(Color.RED);
+					startActivity(new Intent(MenuActivity.this, MessageActivity.class));
+				//}else {
+				//	v.setBackgroundColor(Color.LTGRAY);
+				//}
 			}
 		});
 

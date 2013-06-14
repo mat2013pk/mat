@@ -8,6 +8,7 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import org.w3c.dom.NodeList;
@@ -41,6 +42,8 @@ import org.apache.http.entity.mime.content.FileBody;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.java.mat.Connection;
 
 public class Message implements IMessage {
 	private String code = null, msg = null, file = null;
@@ -209,41 +212,21 @@ public class Message implements IMessage {
 		String uri = "http://mat.sofect.com/server.php?" + "&key=" + key
 				+ "&function=recvMsg" + "&email=" + email;
 
-		HttpClient client = new DefaultHttpClient();
-		HttpGet request = new HttpGet(uri);
-		HttpResponse response = null;
-
+		JSONObject data = Connection.connectToServer(uri);
+		if (data == null)
+			return "1";
 		try {
-			response = client.execute(request);
-			InputStream in = response.getEntity().getContent();
-
-			code = null;
-			msg = null;
-			file = null;
-			StringBuilder sb = new StringBuilder();
-			InputStreamReader reader = new InputStreamReader(in);
-			BufferedReader buffer = new BufferedReader(reader);
-			String cur;
-			while ((cur = buffer.readLine()) != null)
-				sb.append(cur + "\n");
-
-			// parsowanie JSONa
-			try {
-				JSONObject json = new JSONObject(sb.toString());
-				code = json.getString("code");
-				msg = json.getString("msg");
-				file = json.getString("file");
-			} catch (JSONException e) {
-				return e.getMessage();
+			code = data.getString("code");
+			msg = data.getString("msg");
+			file = data.getString("file");
+			// lista.additem(msg, file);
+			if (Integer.parseInt(code) == 0) {
+				lista.additem(msg, file);
 			}
-			if (code != "0")
-				return code;
-			lista.additem(msg, file);
-			return "0";
-		} catch (ClientProtocolException e) {
-			return e.getMessage();
-		} catch (IOException e) {
-			return e.getMessage();
+			return code;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return "1";
 		}
 
 	}
@@ -260,7 +243,7 @@ public class Message implements IMessage {
 	}
 
 	// funkcja zwraca tablicê z wszystkimi wiadomoœciami
-	public Msg[] getMsgAll() {
+	public ArrayList<Msg> getMsgAll() {
 		return lista.getMsgAll();
 	}
 
@@ -307,9 +290,20 @@ public class Message implements IMessage {
 	}
 
 	@Override
-	public String getFile() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<String> getMsgByTextAll() {
+		ArrayList<Msg> lm = lista.getMsgAll();
+		Log.e("ILOSC WIADOMOSCI:", " " + lm.size());
+		ArrayList<String> lw = new ArrayList<String>(lista.getSize());
+		for (int i = lm.size() - 1; i >= 0 ; i--) {
+			lw.add(lista.getMsgByIndex(i).getmsg());
+		}
+		return lw;
+	}
+
+	@Override
+	public void recvMsgAll(String key, String email) {
+		while (this.recvMsg(key, email) != "1") {}
+		Log.e("po petli mam: ", lista.getMsgAll().size() + " wiadomosci");
 	}
 
 }
