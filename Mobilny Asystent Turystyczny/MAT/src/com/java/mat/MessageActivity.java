@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import message.*;
 
 public class MessageActivity extends Activity {
@@ -19,14 +20,18 @@ public class MessageActivity extends Activity {
 		setContentView(R.layout.activity_wiadomosci);
 		GlobalSettings.getInstance().setMessageStatus(false);
 		ListView lv = (ListView) findViewById(R.id.wiadomosci_lista);
-		
+		TextView tv = (TextView) findViewById(R.id.wiadomosci_title);
 		IMessage m = new Message();
-		m.recvMsgAll(GlobalSettings.getInstance().getSecretKey(), GlobalSettings.getInstance().getMail());
-		//m.recvMsg(GlobalSettings.getInstance().getSecretKey(), GlobalSettings.getInstance().getMail());
+		m.recvMsgAll(GlobalSettings.getInstance().getSecretKey(),
+				GlobalSettings.getInstance().getMail());
+		// m.recvMsg(GlobalSettings.getInstance().getSecretKey(),
+		// GlobalSettings.getInstance().getMail());
 		ArrayList<String> lista_wiadomosci = m.getMsgByTextAll();
 		Log.e("Glowna lista", "" + lista_wiadomosci.size());
-		ArrayAdapter<String> arrayAdapter =      
-		         new ArrayAdapter<String>(MessageActivity.this,android.R.layout.simple_list_item_1, lista_wiadomosci);
-		         lv.setAdapter(arrayAdapter);
+		tv.setText("Masz " + lista_wiadomosci.size() + " nieprzeczytanych wiadomosci\n");
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+				MessageActivity.this, android.R.layout.simple_list_item_1,
+				lista_wiadomosci);
+		lv.setAdapter(arrayAdapter);
 	}
 }

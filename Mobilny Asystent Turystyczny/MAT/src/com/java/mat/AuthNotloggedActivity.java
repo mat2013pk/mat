@@ -1,7 +1,5 @@
 package com.java.mat;
 
-import java.util.concurrent.TimeUnit;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,9 +41,36 @@ public class AuthNotloggedActivity extends Activity {
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						EditText email = (EditText) findViewById(R.id.logowanie_mail);
-						EditText haslo = (EditText) findViewById(R.id.logowanie_pass);
-						
+						final EditText email = (EditText) findViewById(R.id.logowanie_mail);
+						final EditText haslo = (EditText) findViewById(R.id.logowanie_pass);
+					    email.setOnFocusChangeListener(new OnFocusChangeListener()
+					    {
+					        @Override
+					        public void onFocusChange(View v, boolean hasFocus) 
+					        {
+					            if (hasFocus==true)
+					            {
+					                if (email.getText().toString().compareTo("email")==0)
+					                {
+					                    email.setText("");
+					                }
+					            }
+					        }
+					    });
+					    haslo.setOnFocusChangeListener(new OnFocusChangeListener()
+					    {
+					        @Override
+					        public void onFocusChange(View v, boolean hasFocus) 
+					        {
+					            if (hasFocus==true)
+					            {
+					                if (haslo.getText().toString().compareTo("has³o")==0)
+					                {
+					                    haslo.setText("");
+					                }
+					            }
+					        }
+					    });
 						boolean ok = Autoryzacja.zaloguj(email.getText().toString(), haslo.getText().toString());
 	    				
 						if(libs.Validator.isValidEmail((CharSequence) email.getText()) && ok){
@@ -100,9 +126,51 @@ public class AuthNotloggedActivity extends Activity {
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						EditText imie = (EditText) findViewById(R.id.nowekonto_imie);
-						EditText nazwisko = (EditText) findViewById(R.id.nowekonto_nazwisko);
-						EditText email = (EditText) findViewById(R.id.nowekonto_mail);
+						final EditText imie = (EditText) findViewById(R.id.nowekonto_imie);
+						final EditText nazwisko = (EditText) findViewById(R.id.nowekonto_nazwisko);
+						final EditText email = (EditText) findViewById(R.id.nowekonto_mail);
+						email.setOnFocusChangeListener(new OnFocusChangeListener()
+					    {
+					        @Override
+					        public void onFocusChange(View v, boolean hasFocus) 
+					        {
+					            if (hasFocus==true)
+					            {
+					                if (email.getText().toString().compareTo("e-mail")==0)
+					                {
+					                    email.setText("");
+					                }
+					            }
+					        }
+					    });
+						nazwisko.setOnFocusChangeListener(new OnFocusChangeListener()
+					    {
+					        @Override
+					        public void onFocusChange(View v, boolean hasFocus) 
+					        {
+					            if (hasFocus==true)
+					            {
+					                if (nazwisko.getText().toString().compareTo("nazwisko")==0)
+					                {
+					                	nazwisko.setText("");
+					                }
+					            }
+					        }
+					    });
+						imie.setOnFocusChangeListener(new OnFocusChangeListener()
+					    {
+					        @Override
+					        public void onFocusChange(View v, boolean hasFocus) 
+					        {
+					            if (hasFocus==true)
+					            {
+					                if (imie.getText().toString().compareTo("imie")==0)
+					                {
+					                	imie.setText("");
+					                }
+					            }
+					        }
+					    });
 						boolean rejestracja = Autoryzacja.zarejestruj(email.getText().toString(), imie.getText().toString(), nazwisko.getText().toString());
 						if(rejestracja && libs.Validator.isValidEmail((CharSequence) email.getText())){
 							Toast t = Toast.makeText(getApplicationContext(), "Zarejestrowano poprawnie, na twoj email " + email.getText().toString() + " wyslano haslo ", Toast.LENGTH_SHORT);
