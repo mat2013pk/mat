@@ -29,6 +29,16 @@ public class Trasa {
 	private GoogleMap mapaGoogle;
 	private ArrayList<PolylineOptions> trasa; //lista lini tworz¹cych trase
 	private LatLng destinyPosition;
+	static boolean strictModeAvailable;
+	static {
+        
+		try {
+            StrictModeWrapper.checkAvailable();
+            strictModeAvailable = true;
+        } catch (Throwable throwable) {
+            strictModeAvailable = false;
+        }
+    }
 	
 	public void setGoogleMapInstance(GoogleMap instancja)
 	{
@@ -251,9 +261,10 @@ public class Trasa {
 	   // Log.d("userDebbbb",url);
 	    
 	    try {
-        	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-        	StrictMode.setThreadPolicy(policy);
+			if (strictModeAvailable) {
+				StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+				StrictMode.setThreadPolicy(policy); 
+	        }
 	        HttpClient httpClient = new DefaultHttpClient();
 	        HttpContext localContext = new BasicHttpContext();
 	        HttpPost httpPost = new HttpPost(url);

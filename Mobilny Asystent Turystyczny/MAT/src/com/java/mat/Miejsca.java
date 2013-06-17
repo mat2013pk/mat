@@ -29,6 +29,16 @@ final class Miejsca{
 	Pinezki znalezoneMiejsca;
 	GoogleMap wskNaInstancjeGoogleMap;
 	String klucz = "AIzaSyASEwRkZt-0VSm5aPL32rbDD2CwpaZdxlE"; //autoryzacja dla api
+	private static boolean strictModeAvailable;
+	
+	static {
+        try {
+            StrictModeWrapper.checkAvailable();
+            strictModeAvailable = true;
+        } catch (Throwable throwable) {
+            strictModeAvailable = false;
+        }
+    }
 	
 	public void setGoogleMapInstance(GoogleMap instancja)
 	{
@@ -137,9 +147,10 @@ final class Miejsca{
                 + "&key=" + klucz;
         
         try {
-        	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-        	StrictMode.setThreadPolicy(policy);
+			if (strictModeAvailable) {
+				StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+				StrictMode.setThreadPolicy(policy); 
+	        }
         	
             HttpClient httpClient = new DefaultHttpClient();Log.d("userDebuggggg",1+"");
             HttpContext localContext = new BasicHttpContext();Log.d("userDebuggggg",2+"");

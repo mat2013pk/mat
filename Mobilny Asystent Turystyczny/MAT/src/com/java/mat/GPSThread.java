@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.util.Log;
 
 public class GPSThread implements Runnable {
@@ -12,21 +13,25 @@ public class GPSThread implements Runnable {
 	Double longtitude;
 	Double latitude;
 
+	private MediaPlayer mp;
+	private int soundId = R.raw.my_sound;
+
 	public GPSThread(Context m) {
 		t = new Thread(this);
 		gps = new GPSTracker(m);
+		mp = MediaPlayer.create(MenuActivity.cnt, soundId);
 		t.start();
 		// send = true;
 	}
 
 	@Override
 	public void run() {
-		Log.d("user","nowy watek sledzacy");
+		Log.d("user", "nowy watek sledzacy");
 		while (GlobalSettings.getInstance().getUserLoggingStatus()) {
 			sendGPSLocation();
-			Log.d("user","watek sledzacy sobie dzia³am");
+			Log.d("user", "watek sledzacy sobie dzia³am");
 			try {
-				Thread.sleep(15000);
+				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				Log.e("BLAD W SENDZIE", "NIE DZIALA WATEK");
@@ -59,6 +64,14 @@ public class GPSThread implements Runnable {
 			status = false;
 		}
 		GlobalSettings.getInstance().setMessageStatus(status);
+		if (status){
+			if (mp != null) {
+				mp.release();
+			}
+			mp.start();
+		} else {
+			mp.stop();
+		}
 
 	}
 

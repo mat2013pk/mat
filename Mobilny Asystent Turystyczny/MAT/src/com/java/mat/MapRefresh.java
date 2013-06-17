@@ -23,9 +23,19 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class MapRefresh implements Runnable {
 	private Thread t;
-	
+	private static boolean strictModeAvailable;
 	Handler mainHandler;
 	Runnable myRunnable;
+	
+	static {
+        try {
+            StrictModeWrapper.checkAvailable();
+            strictModeAvailable = true;
+        } catch (Throwable throwable) {
+            strictModeAvailable = false;
+        }
+    }
+	
 	public MapRefresh(Context context)
 	{
 		
@@ -59,9 +69,10 @@ public class MapRefresh implements Runnable {
 			String doc="";
 		    
 		    try {
-	        	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-	        	StrictMode.setThreadPolicy(policy);
+				if (strictModeAvailable) {
+					StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+					StrictMode.setThreadPolicy(policy); 
+		        }
 		        HttpClient httpClient = new DefaultHttpClient();
 		        HttpContext localContext = new BasicHttpContext();
 		        HttpPost httpPost = new HttpPost(url1);

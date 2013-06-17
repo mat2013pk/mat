@@ -38,9 +38,9 @@ public class MsgList {
 
 	// funkcja dodaj¹ca odebran¹ wiadomoœæ, wraz z ewentualnym adresem pliku do
 	// listy
-	public void additem(String text, String addres) {
+	public void additem(String text, String addres, String email) {
 		last_index++;
-		Msg tmp = new Msg(last_index, text, addres);
+		Msg tmp = new Msg(last_index, text, addres, email);
 		Log.e("add", "Dodaje wiadomosc");
 		msg.add(tmp);
 	}
@@ -71,12 +71,12 @@ public class MsgList {
 	// postaci tablicy tych obiektów
 	public ArrayList<Msg> getMsgAll() {
 		ArrayList<Msg> tmp = new ArrayList<Msg>();
-		Log.e("ILOSC WIADOMOSCI MSG:", " " + msg.size());
+		//Log.e("ILOSC WIADOMOSCI MSG:", " " + msg.size());
 		for (int i = 0; i < msg.size(); i++) {
 			//tmp[i] = msg.get(i);
 			tmp.add( msg.get(i));
 		}
-		Log.e("ILOSC WIADOMOSCI TMP:", " " + tmp.size());
+		//Log.e("ILOSC WIADOMOSCI TMP:", " " + tmp.size());
 		return tmp;
 	}
 

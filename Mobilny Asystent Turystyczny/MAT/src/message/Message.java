@@ -46,7 +46,7 @@ import org.json.JSONObject;
 import com.java.mat.Connection;
 
 public class Message implements IMessage {
-	private String code = null, msg = null, file = null;
+	private String code = null, msg = null, file = null, mail = null;
 	Bitmap tmpBitmap;
 	HttpClient client = new DefaultHttpClient();
 	HttpGet request = new HttpGet();
@@ -219,9 +219,10 @@ public class Message implements IMessage {
 			code = data.getString("code");
 			msg = data.getString("msg");
 			file = data.getString("file");
+			mail = data.getString("emailSend");
 			// lista.additem(msg, file);
 			if (Integer.parseInt(code) == 0) {
-				lista.additem(msg, file);
+				lista.additem(msg, file, mail);
 			}
 			return code;
 		} catch (JSONException e) {
@@ -288,6 +289,10 @@ public class Message implements IMessage {
 	public int getIdFromMsg(Msg message) {
 		return message.getid();
 	}
+	
+	public String getMailFromMsg(Msg message) {
+		return message.getSendMail();
+	}
 
 	@Override
 	public ArrayList<String> getMsgByTextAll() {
@@ -295,7 +300,7 @@ public class Message implements IMessage {
 		Log.e("ILOSC WIADOMOSCI:", " " + lm.size());
 		ArrayList<String> lw = new ArrayList<String>(lista.getSize());
 		for (int i = lm.size() - 1; i >= 0 ; i--) {
-			lw.add(lista.getMsgByIndex(i).getmsg());
+			lw.add("Od: " + lista.getMsgByIndex(i).getSendMail() + "\n" + lista.getMsgByIndex(i).getmsg());
 		}
 		return lw;
 	}

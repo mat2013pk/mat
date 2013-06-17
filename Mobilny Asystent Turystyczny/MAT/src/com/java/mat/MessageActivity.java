@@ -17,7 +17,7 @@ public class MessageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_wiadomosci);
-		
+		GlobalSettings.getInstance().setMessageStatus(false);
 		ListView lv = (ListView) findViewById(R.id.wiadomosci_lista);
 		
 		IMessage m = new Message();

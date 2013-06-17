@@ -18,7 +18,7 @@ public class SosActivity extends Activity {
 		Button wiadomosc1 = (Button) findViewById(R.id.sos_message1);
 		Button wiadomosc2 = (Button) findViewById(R.id.sos_message2);
 		Button wiadomosc3 = (Button) findViewById(R.id.sos_message3);
-
+		
 		wiadomosc1.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -26,7 +26,7 @@ public class SosActivity extends Activity {
 				IMessage wiadomosc = (IMessage) new Message();
 				Integer status = Integer.parseInt(wiadomosc.sendMsg(
 						"412fg68kw378", GlobalSettings.getInstance().getMail(),
-						null, "Alarm 1", null, false));
+						null, "Potrzebuje pomocy", null, false));
 				Toast t;
 				if (status == 0) {
 					t = Toast.makeText(getApplicationContext(),
@@ -49,7 +49,7 @@ public class SosActivity extends Activity {
 				IMessage wiadomosc = (IMessage) new Message();
 				Integer status = Integer.parseInt(wiadomosc.sendMsg(
 						"412fg68kw378", GlobalSettings.getInstance().getMail(),
-						null, "Alarm 2", null, false));
+						null, "Ustalmy miejsce spotkania", null, false));
 				Toast t;
 				if (status == 0) {
 					t = Toast.makeText(getApplicationContext(),
@@ -72,7 +72,7 @@ public class SosActivity extends Activity {
 				IMessage wiadomosc = (IMessage) new Message();
 				Integer status = Integer.parseInt(wiadomosc.sendMsg(
 						"412fg68kw378", GlobalSettings.getInstance().getMail(),
-						null, "Alarm 3", null, false));
+						null, "Poczekajcie na mnie", null, false));
 				Toast t;
 				if (status == 0) {
 					t = Toast.makeText(getApplicationContext(),

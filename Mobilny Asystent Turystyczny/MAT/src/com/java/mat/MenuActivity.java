@@ -10,6 +10,7 @@ import message.Group;
 import message.IGroup;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
@@ -17,13 +18,14 @@ import android.view.Window;
 import android.widget.Button;
 
 public class MenuActivity extends Activity {
-
+public static  Context cnt;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_menu);
-
+		
+		cnt = this.getApplicationContext();
 		Button autoryzacja = (Button) findViewById(R.id.menu_autoryzacja);
 		Button mapa = (Button) findViewById(R.id.menu_nawigacja);
 		Button grupa = (Button) findViewById(R.id.menu_grupa);
@@ -143,7 +145,7 @@ public class MenuActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				startActivity(new Intent(MenuActivity.this, FaqActivity.class));
 
 			}
 		});
@@ -152,7 +154,7 @@ public class MenuActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				startActivity(new Intent(MenuActivity.this, AutorsActivity.class));
 
 			}
 		});

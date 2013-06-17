@@ -23,14 +23,18 @@ import android.os.StrictMode;
 import android.util.Log;
 
 public class Connection {
-	/**
-	 * Function return JsonObject from server
-	 * @param url to server
-	 * @return JsonObject
-	 */
-	
+	private static boolean strictModeAvailable;
 	static MatServer matServer = null;
 	
+	static {
+        try {
+            StrictModeWrapper.checkAvailable();
+            strictModeAvailable = true;
+        } catch (Throwable throwable) {
+            strictModeAvailable = false;
+        }
+    }
+ 
 	public static MatServer getMatServer()
 	{
 		if(matServer == null)
@@ -50,8 +54,10 @@ public class Connection {
     	JSONObject json;
     	Log.d("KOD","connect");
 		try {
-			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-			StrictMode.setThreadPolicy(policy); 
+			if (strictModeAvailable) {
+				StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+				StrictMode.setThreadPolicy(policy); 
+	        }
 	        HttpClient httpClient = new DefaultHttpClient();
 	        HttpContext localContext = new BasicHttpContext();
 	        HttpPost httpPost = new HttpPost(url);
@@ -83,7 +89,10 @@ public class Connection {
 	    ArrayList<JSONObject> items = new ArrayList<JSONObject>();
 	 
 	    try {
-	    	
+			if (strictModeAvailable) {
+				StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+				StrictMode.setThreadPolicy(policy); 
+	        }
 	        URL url = new URL(url2);
 	        HttpURLConnection urlConnection =
 	            (HttpURLConnection) url.openConnection();

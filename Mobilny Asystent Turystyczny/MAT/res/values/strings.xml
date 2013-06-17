@@ -21,44 +21,235 @@
     <string name="konto_dane">Moje dane</string>
     <string name="konto_wyloguj">Wyloguj</string>
     <string name="konto_usun">Usuń konto</string>
-	<string name="TEMP_email">e-mail</string>
-	<string name="TEMP_pass">hasło</string>
-	<string name="OK">OK</string>
-	<string name="przypomnij_haslo">Przypomnij hasło</string>
-	<string name="TEMP_imie">imię</string>
-	<string name="TEMP_nazwisko">nazwisko</string>
-	<string name="ustawienia_roaming">Roaming</string>
-	<string name="ustawienia_kompresja">Kompresja zdjęć</string>
-	<string name="toggle_roaming">toggle_roaming</string>
-	<string name="toggle_kompresja">toggle_kompresja</string>
-	<string name="toggle_pokaz">toggle_pokaz</string>
-	<string name="ustawienia_pokaz">ustawienia_pokaz</string>
-	<string name="logo">logo</string>
-	<string name="autoryzacja_mojedane">Moje dane</string>
-	<string name="autoryzacja_zmienhaslo">Zmień hasło</string>
-	<string name="autoryzacja_wyloguj">Wyloguj</string>
-	<string name="autoryzacja_usunkonto">Usuń konto</string>
-	<string name="dane_imienazwisko">imię i nazwisko</string>
-	<string name="dane_grupa">grupa</string>
-	<string name="dane_status">status</string>
-	<string name="wersja_app">MAT alpha 0.1</string>
-	<string name="nawigacja_douzytkownika">Prowadź do użytkownika</string>
-	<string name="nawigacja_domiejsca">Prowadź do miejsca</string>
-	<string name="tak">Tak</string>
-	<string name="nie">Nie</string>
-	<string name="logout_text">Na pewno chcesz się wylogować?</string>
-	<string name="accountdelete_text">Na pewno chcesz usunąć konto?</string>
-	<string name="joingroup_text">Czy chcesz dołączyć do tej grupy?</string>
-	<string name="groupdisconnect_text">Na pewno chcesz wypisać się z grupy?</string>
-	<string name="passgroup_text">Na pewno chcesz przekazać grupę?</string>
-	<string name="blockuser_text">Na pewno chcesz zablokować użytkownika?</string>
-	<string name="groupdelete_text">Na pewno chcesz usunąć grupę?</string>
-	<string name="deletepoint_text">Usunąć punkt trasy?</string>
-	<string name="wiadomosc1">wiadomosc 1</string>
-	<string name="wiadomosc2">wiadomosc 2</string>
-	<string name="wiadomosc3">wiadomosc 3</string>
-	<string name="create_group">Utwórz grupę</string>
-	<string name="join_group">Dołącz do grupy</string>
-	<string name="TMP_group_name">nazwa grupy</string>
+    <string name="TEMP_email">e-mail</string>
+    <string name="TEMP_pass">hasło</string>
+    <string name="OK">OK</string>
+    <string name="przypomnij_haslo">Przypomnij hasło</string>
+    <string name="TEMP_imie">imię</string>
+    <string name="TEMP_nazwisko">nazwisko</string>
+    <string name="ustawienia_roaming">Roaming</string>
+    <string name="ustawienia_kompresja">Kompresja zdjęć</string>
+    <string name="toggle_roaming">toggle_roaming</string>
+    <string name="toggle_kompresja">toggle_kompresja</string>
+    <string name="toggle_pokaz">toggle_pokaz</string>
+    <string name="ustawienia_pokaz">ustawienia_pokaz</string>
+    <string name="logo">logo</string>
+    <string name="autoryzacja_mojedane">Moje dane</string>
+    <string name="autoryzacja_zmienhaslo">Zmień hasło</string>
+    <string name="autoryzacja_wyloguj">Wyloguj</string>
+    <string name="autoryzacja_usunkonto">Usuń konto</string>
+    <string name="dane_imienazwisko">imię i nazwisko</string>
+    <string name="dane_grupa">grupa</string>
+    <string name="dane_status">status</string>
+    <string name="wersja_app">MAT alpha 0.1</string>
+    <string name="nawigacja_douzytkownika">Prowadź do użytkownika</string>
+    <string name="nawigacja_domiejsca">Prowadź do miejsca</string>
+    <string name="tak">Tak</string>
+    <string name="nie">Nie</string>
+    <string name="logout_text">Na pewno chcesz się wylogować?</string>
+    <string name="accountdelete_text">Na pewno chcesz usunąć konto?</string>
+    <string name="joingroup_text">Czy chcesz dołączyć do tej grupy?</string>
+    <string name="groupdisconnect_text">Na pewno chcesz wypisać się z grupy?</string>
+    <string name="passgroup_text">Na pewno chcesz przekazać grupę?</string>
+    <string name="blockuser_text">Na pewno chcesz zablokować użytkownika?</string>
+    <string name="groupdelete_text">Na pewno chcesz usunąć grupę?</string>
+    <string name="deletepoint_text">Usunąć punkt trasy?</string>
+    <string name="wiadomosc1">Potrzebuje pomocy</string>
+    <string name="wiadomosc2">Ustalmy miejsce spotkania</string>
+    <string name="wiadomosc3">Poczekajcie na mnie</string>
+    <string name="create_group">Utwórz grupę</string>
+    <string name="join_group">Dołącz do grupy</string>
+    <string name="TMP_group_name">nazwa grupy</string>
+    <string name="nice_faq">
+<![CDATA[
+<p>
+<p><b>FAQ
+ - czyli odpowiedzi na najczęstsze pytania</b></p>
+<p><b>Jak
+zalogować się do aplikacji?</b></p>
+<p>Wybieramy
+opcję „Autoryzacja”, a następnie opcje zalogowania się. Po
+wpisaniu poprawnego hasła i loginu wyświetla się komunikat
+potwierdzający zalogowanie.</p>
+<p><b>Jak
+stworzyć konto?</b></p>
+<p>Wybieramy
+opcję „Autoryzacja”, następnie opcje rejestracji. Po
+wypełnieniu pól i wysłaniu danych na serwer. Otrzymujemy hasło do
+logowania na podany adres mailowy.</p>
+<p><b>Jak
+zmienić hasło?</b></p>
+<p>Wybieramy
+opcję „Autoryzacja”, a następnie opcje zmiany hasła. Po
+prawidłowym wprowadzeniu nowego hasła, zostaje ono zapisane na
+serwerze i dostępne dla użytkownika przy kolejnym logowaniu.</p>
+<p><b>Jak
+przypomnieć hasło?</b></p>
+<p>Wybieramy
+opcję „Autoryzacja”, następnie opcje logowania. Po wyborze
+opcji przypomnienia hasła oraz uzupełnieniu pola na adres mailowy
+wysyłamy prośbę do serwera. Na podany adres mailowy otrzymujemy
+obecne hasło.</p>
+<p><b>Jak
+zobaczyć swoje dane?</b></p>
+<p>Wybieramy
+opcję „Autoryzacja”, następnie opcje moich danych, gdzie
+wyświetlone są wszystkie dane użytkownika.</p>
+<p><b>Jak
+usunąć konto?</b></p>
+<p>Wybieramy
+opcję „Autoryzacja”, a następnie opcje usunięcia konta. Po
+zatwierdzeniu czynności usuwamy konto z serwera.</p>
+<p><b>Gdzie
+znajdę informacje o autorach?</b></p>
+<p>Wybieramy
+opcję „O autorach”, która zawiera dokładne dane autorów
+aplikacji.</p>
+<p><b>Jak
+sprawdzić swoją lokalizacje?</b></p>
+<p>Wybieramy
+opcję „Nawigacja”, gdzie w zakładce mapy znajduje się
+niebieska kropka z naszą własną lokalizacją.</p>
+<p><b>Jak
+zrobić zdjęcie aby przesłać je znajomym?</b></p>
+<p>Wybieramy
+opcję „Aparat”, która przenosi nas do wbudowanego aparatu w
+telefonie komórkowym.</p>
+<p><b>Jak
+wysłać sygnał SOS?</b></p>
+<p>Wybieramy
+opcję „SOS”, a następnie wybieramy konkretny sygnał do
+wysłania wszystkim w pobliżu.</p>
+<p><b>Jak
+znaleźć użytkowników z grupy?</b></p>
+<p>Wybieramy
+opcję „Nawigacja”, a następnie zakładkę mapy na której
+znajdują się znaczniki z imionami i nazwiskami członków naszej
+grupy.</p>
+<p><b>Jak
+znaleźć miejsca grupy?</b></p>
+<p>Wybieramy
+opcję „Nawigacja”, wybieramy zakładkę mapy na której znajdują
+się znaczniki reprezentujące na mapie ulubione miejsca grupy.</p>
+<p><b>Jak
+dodać miejsc do ulubionych miejsc grupy?</b></p>
+<p>Wybieramy
+opcję „Nawigacja”, a następnie w zakładce mapy przytrzymujemy
+dany punkt na mapie. Wyświetla się nam możliwość danego miejsca
+do list ulubionych miejsc.</p>
+<p><b>Gdzie
+mogę znaleźć informacje o mojej grupie, zarządzać grupą lub
+zapisać się do innej grupy?</b></p>
+<p>Wybieramy
+opcję „Grupa”, gdzie znajduje się opcja zwierająca informacje
+o swojej grupie. Na wyświetlanej liście członków w przypadku
+posiadania uprawnień przewodnika można wykonywać takie czynności
+jak usuwanie z grupy tudzież przekazanie uprawnień. W razie braku
+należności do grupy po wybraniu opcji „Grupa” wyświetla nam
+się opcja dołączenia do grupy, dzięki której wyświetla się
+lista grup do których możemy dołączyć.</p>
+<p><b>Jak
+znaleźć miejsca na mapie z poszczególnych kategorii?</b></p>
+<p>Wybieramy
+opcję „Nawigacja”, a następnie zakładkę miejsc. W powyższej
+zakładce znajduje się lista z kategorii do wyświetlenia, które
+pojawiają się na mapie po ich zatwierdzeniu.</p>
+<p><b>Jak
+wysłać wiadomość lub zdjęcie do użytkowników?</b></p>
+<p>Wybieramy
+opcję „Wiadomości”, a następnie po wyborze konkretnego
+użytkownika lub wiadomości grupowej w przypadku przewodnika grupy
+piszemy daną wiadomość. Za pomocą opcji dodania zdjęcia możemy
+dodać możliwość przesłania zdjęcia z pamięci własnego
+telefonu do wybranego wcześniej użytkownika.</p>
+<p><b>Jak
+ustawić promień wyszukiwania miejsc ?</b></p>
+<p>Wybierając
+opcję „Nawigacja”, a kolejno miejsca można przejść do
+zakładki wyszukiwania miejsc z poszczególnych kategorii. W danej
+zakładce znajduje się pole z miejscem na wpisanie danej odległości
+w zakresie której chcemy szukać interesujących miejsc na mapie.</p>
+<p>
+</p><br></p>
+]]>
+    </string>
+    <string name="nice_autors">
+<![CDATA[
+
+<p style="text-align: center;">
+AppsCrew</p>
+<p align="center">Patron
+zespołu: <b>dr
+hab. inż. Krzysztof Cetnarowicz</b></p>
+<p align="center"><b>Skład
+zespołu:</b></p>
+<p style="text-align: center;">Łukasz
+Wicherski</p>
+<p style="text-align: center;"><b>Kierownik
+projektu, kontakt z klientem, wizualizacja interfejsu, instrukcja,
+dokumentacja, specyfikacja</b></p>
+<p style="text-align: center;">Wojciech
+Smardz</p>
+<p style="text-align: center;"><b>Z-ca
+kierownika projektu, kontakt z klientem, specyfikacja, dokumentacja,
+instrukcja</b></p>
+<p style="text-align: center;">Mateusz
+Siepracki</p>
+<p style="text-align: center;"><b>Implementacja
+interfejsu aplikacji oraz podstawowych modułów, coding expert</b></p>
+<p style="text-align: center;">Tomasz
+Ziębiec</p>
+<p style="text-align: center;"><b>Architekt,
+kontakt z klientem, integracja modułów z pracami implementacyjnymi</b></p>
+<p style="text-align: center;">Konrad
+Zapała</p>
+<p style="text-align: center;"><b>Architekt,
+integracja modułów z pracami implementacyjnymi</b></p>
+<p style="text-align: center;">Waldemar
+Serafin</p>
+<p style="text-align: center;"><b>Implementacja
+modułu autoryzacji oraz map i lokalizacji, coding expert</b></p>
+<p style="text-align: center;">Tomasz
+Nocoń</p>
+<p style="text-align: center;"><b>Implementacja
+modułu map i lokalizacji</b></p>
+<p style="text-align: center;">Mateusz
+Przybyłek</p>
+<p style="text-align: center;"><b>Implementacja
+modułu map i lokalizacji</b></p>
+<p style="text-align: center;">Kamil
+Słowiak</p>
+<p style="text-align: center;"><b>Implementacja
+modułu komunikacji oraz zarządzania grupami</b></p>
+<p style="text-align: center;">Paweł
+Szatan</p>
+<p style="text-align: center;"><b>Implementacja
+modułu komunikacji oraz zarządzania grupami</b></p>
+<p style="text-align: center;">Paweł
+Widacha</p>
+<p style="text-align: center;"><b>Implementacja
+modułu komunikacji oraz zarządzania grupami</b></p>
+<p style="text-align: center;">Tomasz
+Włodarczyk</p>
+<p style="text-align: center;"><b>Projekt
+oraz implementacja serwera</b></p>
+<p style="text-align: center;">Paweł
+Stopyra</p>
+<p style="text-align: center;"><b>Projekt
+bazy danych</b></p>
+<p style="text-align: center;">Jarosław
+Szczupak</p>
+<p style="text-align: center;"><b>Implementacja
+bazy danych</b></p>
+<p style="text-align: center;">Łukasz
+Pikor</p>
+<p style="text-align: center;"><b>Zarządzanie
+wersją oraz moduł aparatu</b></p>
+<p style="text-align: center;">Michał
+Wybranowski</p>
+<p style="text-align: center;"><b>Moduł
+aparatu</b></p>
+	]]>
+    </string>
 
 </resources>
