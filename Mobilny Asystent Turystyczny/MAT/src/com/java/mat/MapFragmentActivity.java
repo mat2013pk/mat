@@ -1,10 +1,28 @@
 package com.java.mat;
 
-import com.google.android.gms.maps.model.LatLng;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +30,42 @@ import android.widget.LinearLayout;
 
 public class MapFragmentActivity extends Fragment {
 	private Mapa map;
-		
+	
 
+	
+	
     public void onHiddenChanged(boolean hidden)
     {
     	    	 
-    	//map.getInstancjeMapyGoogle().setOnMarkerClickListener(this); //dodane lisnera na pinezki do mapy wyznaczenie trasy do pinezki
-        //map.getInstancjeMapyGoogle().setOnMapClickListener(this); //wlaczenie lisnera na mape np dodanie w³asnej pinezki
     	
-   	
-    	if(!hidden) map.rysujWszystko();
+    	if(!hidden){
+    		
+    		//PobierzZnajomychDodajDoMay();
+    		map.rysujWszystko();
+    	}
     	super.onHiddenChanged(hidden);
     }
 	
+    public void onCreate(Bundle savedInstanceState) 
+    {
+    	Log.d("userDebuggggg"," oncreate");
+    	super.onCreate(savedInstanceState);
+    	//SingletonInterfejsMapy.getInstance().setMapActivity(this);
+    }
+    
+
+    
+    /*
+    public boolean onKeyDown(int keyCode, KeyEvent event) 
+    { 
+    	if (keyCode == KeyEvent.KEYCODE_BACK) 
+    	{ 
+    		Intent intent = new Intent(ActivityTwo.this, ActivityOne.class);
+    		intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP); startActivity(intent); 
+    	} 
+    return super.onKeyDown(keyCode, event); 
+    }
+    */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         
     	if (container == null) {
@@ -35,17 +76,16 @@ public class MapFragmentActivity extends Fragment {
         Fragment frag = getFragmentManager().findFragmentById(R.id.mapa);
         Log.d("userDebuggggg","fragment z mapa oncreate");
         map = new Mapa(frag);
-        InterfejsDlaMapy.getInstance().setMapa(map);
+        SingletonInterfejsMapy.getInstance().setMapa(map);
         	
-        //zaczytanie z serwera danych tuuuuuuuuuuuuuuuu
-        //sprawdzic autoryzacje maila i pobrac pinezki
-    	Pinezki pinezki = map.getPinezki();
-    	pinezki.dodajPinezkeDoListy(new LatLng(50.061664,19.937217), "looool");
-		pinezki.dodajPinezkeDoListy(new LatLng(51.061664,19.937217), "looool2");
-		pinezki.dodajPinezkeDoListy(new LatLng(53.061664,19.937217), "looool2","cosik");
-	
+        new MapRefresh(this.getActivity());
         
         return (LinearLayout)tmp;
+    }
+    public void onDestroy()
+    {
+    	SingletonInterfejsMapy.getInstance().setMapa(null);
+    	super.onDestroy();
     }
     
     

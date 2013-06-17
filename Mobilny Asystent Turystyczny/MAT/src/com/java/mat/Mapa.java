@@ -7,9 +7,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -17,10 +19,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 
 
-public class Mapa extends FragmentActivity implements LocationListener{
+public class Mapa extends Fragment implements LocationListener{
 	
 	private GoogleMap mapaGoogle;			//referencja do obiektu mapygoogla
 	private Fragment wskNaFragment; //referencja do activity
@@ -29,11 +32,36 @@ public class Mapa extends FragmentActivity implements LocationListener{
 	private Pinezki znajomi; 				//pinezki z pozycja znajomych
 	private Trasa trasa;
 	private InterfejsDlaMapy ustawienia;
+	MarkerDialog markerDialog;
+	
+	public Mapa(Fragment MapFragment)
+	{
+		this.wskNaFragment = MapFragment;
+		this.ustawienia = SingletonInterfejsMapy.getInstance();
+	    initMapaGoogle();
+	    pinezki = new Pinezki(mapaGoogle); //jeden rodzaj pinezek
+	    miejsca = new Miejsca(mapaGoogle);
+	    znajomi = new Pinezki(mapaGoogle, BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+	    trasa = new Trasa(mapaGoogle);
+		SingletonInterfejsMapy.getInstance().setGoogleMap(mapaGoogle);
+		SingletonInterfejsMapy.getInstance().setMapActivity(wskNaFragment);
+		SingletonInterfejsMapy.getInstance().setMapa(this);
+		
+        mapaGoogle.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+			
+			@Override
+			public void onInfoWindowClick(Marker arg0) {
+				
+					markerDialog = new MarkerDialog(arg0);
+					markerDialog.showMarkerDialog();
+					Log.d("userD", "trasa wyznaczona");
+			}
+		});
+	}
 	
 	//zamenc na liste pinezek ktra bêdzie odœwierzana 
 	//trasy wyznaczone lista do wyrysowania
 	
-
 	public Pinezki getZnajomi()
 	{
 		return znajomi;
@@ -63,6 +91,7 @@ public class Mapa extends FragmentActivity implements LocationListener{
 		mapaGoogle.clear();
 		//wyrysowanie obiektow na nowo lub dorysowane aktualnych usuniece nie aktualnych
 		if(ustawienia.pinezki) pinezki.dodajPinezkiDoMapy();
+		if(ustawienia.pinezki) SingletonInterfejsMapy.getInstance().getMiejsca().dodajPinezkiDoMapy();
 		if(ustawienia.miejsca) miejsca.dodajMiejscaDoMapy();
 		if(ustawienia.znajomi) znajomi.dodajPinezkiDoMapy();
 		if(ustawienia.trasa) trasa.dodajTraseDoMapy();
@@ -70,17 +99,7 @@ public class Mapa extends FragmentActivity implements LocationListener{
 
 
 	
-	public Mapa(Fragment MapFragment)
-	{
-		
-		this.wskNaFragment = MapFragment;		
-		this.ustawienia = InterfejsDlaMapy.getInstance();
-	    initMapaGoogle();
-	    pinezki = new Pinezki(mapaGoogle); //jeden rodzaj pinezek
-	    miejsca = new Miejsca(mapaGoogle);
-	    znajomi = new Pinezki(mapaGoogle, BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-	    trasa = new Trasa(mapaGoogle);
-	}
+
 	
 	
 	public void wyczyscMape()
@@ -138,6 +157,7 @@ public class Mapa extends FragmentActivity implements LocationListener{
 		LatLng latlng = new LatLng(loc.getLatitude(),loc.getLongitude());
 		mapaGoogle.moveCamera(CameraUpdateFactory.newLatLng(latlng));
 		mapaGoogle.animateCamera(CameraUpdateFactory.zoomTo(10));
+		
 	}
 	@Override
 	public void onProviderDisabled(String provider) {//jesli nie znaleziono dostawcy

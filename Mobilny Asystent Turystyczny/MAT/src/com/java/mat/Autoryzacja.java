@@ -11,6 +11,8 @@ public class Autoryzacja {
 				+email;
 	    
 		if(Connection.connectToServer(url) == null){
+			
+			
 			return false;
 		} else {
 			return true;

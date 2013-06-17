@@ -16,8 +16,6 @@ import org.apache.http.protocol.HttpContext;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.StrictMode;
 import android.util.Log;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,7 +25,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 
 
-@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 final class Miejsca{
 	Pinezki znalezoneMiejsca;
 	GoogleMap wskNaInstancjeGoogleMap;

@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.StrictMode;
 import android.util.Log;
 
 public class Connection {
@@ -27,10 +28,30 @@ public class Connection {
 	 * @param url to server
 	 * @return JsonObject
 	 */
+	
+	static MatServer matServer = null;
+	
+	public static MatServer getMatServer()
+	{
+		if(matServer == null)
+		{
+			matServer = new MatServer();
+			return matServer;
+		}
+		else
+		{
+			return matServer;
+		}
+	}
+	
+
 	public static JSONObject connectToServer(String url){
     	String doc = "";
     	JSONObject json;
+    	Log.d("KOD","connect");
 		try {
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+			StrictMode.setThreadPolicy(policy); 
 	        HttpClient httpClient = new DefaultHttpClient();
 	        HttpContext localContext = new BasicHttpContext();
 	        HttpPost httpPost = new HttpPost(url);
@@ -45,9 +66,9 @@ public class Connection {
 			
 			json = new JSONObject(sb.toString());
 			doc = json.getString("code");
-	       
+	      
 	    } catch (Exception e) {
-	    	Log.e("KOD", "kod nie zero - exception");
+	    	Log.e("KOD", "kod nie zero - exception"+e.toString());
 	    	return null;
 	    }
 	    if(Integer.parseInt(doc) == 0){

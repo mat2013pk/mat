@@ -83,8 +83,8 @@ public class TabholderActivity extends FragmentActivity implements TabHost.OnTab
         this.mapTabInfo.put(tabInfo.tag, tabInfo);
         TabholderActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab2").setIndicator("Nawigacja"), ( tabInfo = new TabInfo("Tab2", NavigationFragmentActivity.class, args)));
         this.mapTabInfo.put(tabInfo.tag, tabInfo);
-        TabholderActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab3").setIndicator("Grupa"), ( tabInfo = new TabInfo("Tab3", GroupFragmentActivity.class, args)));
-        this.mapTabInfo.put(tabInfo.tag, tabInfo);
+       /* TabholderActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab3").setIndicator("Grupa"), ( tabInfo = new TabInfo("Tab3", GroupFragmentActivity.class, args)));
+        this.mapTabInfo.put(tabInfo.tag, tabInfo);*/
         TabholderActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab4").setIndicator("Miejsca"), ( tabInfo = new TabInfo("Tab4", PlacesFragmentActivity.class, args)));
         this.mapTabInfo.put(tabInfo.tag, tabInfo);
         // Default to first tab

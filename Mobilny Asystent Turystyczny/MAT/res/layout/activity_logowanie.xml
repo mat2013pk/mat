@@ -12,7 +12,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textEmailAddress"
-        android:text="@string/TEMP_email"
+        android:hint="email"
         android:textColor="#000" >
 
         <requestFocus />
@@ -25,8 +25,8 @@
         android:background="@drawable/input"
         android:ems="10"
         android:gravity="center"
+        android:hint="hasło"
         android:inputType="textPassword"
-        android:text="@string/TEMP_pass"
         android:textColor="#000" >
 
         <requestFocus />

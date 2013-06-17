@@ -17,6 +17,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import android.graphics.Color;
+import android.os.StrictMode;
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -27,6 +28,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 public class Trasa {
 	private GoogleMap mapaGoogle;
 	private ArrayList<PolylineOptions> trasa; //lista lini tworz¹cych trase
+	private LatLng destinyPosition;
 	
 	public void setGoogleMapInstance(GoogleMap instancja)
 	{
@@ -43,6 +45,10 @@ public class Trasa {
 		mapaGoogle = wskNaInstancjeGoogleMap;
 		trasa = new ArrayList<PolylineOptions>();
 	}
+	public void WyczyscTrase()
+	{
+		trasa.clear();
+	}
 	public void dodajTraseDoMapy()
 	{
 		for(PolylineOptions p: trasa)
@@ -51,18 +57,31 @@ public class Trasa {
 		}
 		//Log.d("userDebbb", "dodano trase");
 	}
-	public void wyznaczTrase(MarkerOptions m1,MarkerOptions m2,Mode mode)
+	
+	public LatLng getMarkerDestiny()
 	{
-		Document doc = getDocument(m1.getPosition(), m2.getPosition(), mode);
+		return destinyPosition;
+	}
+	
+	public void setMarkerDestiny(LatLng position)
+	{
+		destinyPosition = position;
+	}
+	
+	public void wyznaczTrase(MarkerOptions from,MarkerOptions to,Mode mode)
+	{
+		destinyPosition = to.getPosition();
+		Document doc = getDocument(from.getPosition(), to.getPosition(), mode);
 		PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.BLACK);
 		
 		rectLine.addAll(getDirection(doc));
 		trasa.add(rectLine);
 	}
 	
-	public void wyznaczTrase(LatLng m1,LatLng m2,Mode mode)
+	public void wyznaczTrase(LatLng from,LatLng to,Mode mode)
 	{
-		Document doc = getDocument(m1, m2, mode);
+		destinyPosition = to;
+		Document doc = getDocument(from, to, mode);
 		PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.BLACK);
 		
 		rectLine.addAll(getDirection(doc));
@@ -232,10 +251,9 @@ public class Trasa {
 	   // Log.d("userDebbbb",url);
 	    
 	    try {
-	    	// @TODO zapytac od czego tak klasa jest StrictMode i do czego jest potrzebna
-//        	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//
-//        	StrictMode.setThreadPolicy(policy);
+        	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        	StrictMode.setThreadPolicy(policy);
 	        HttpClient httpClient = new DefaultHttpClient();
 	        HttpContext localContext = new BasicHttpContext();
 	        HttpPost httpPost = new HttpPost(url);

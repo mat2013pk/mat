@@ -12,7 +12,7 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="android:Theme.Black.NoTitleBar">
-        <item name="android:background">@drawable/bg</item>
+        
         <item name="android:textColor">#fff</item>
         <item name="android:buttonStyle">@style/button</item>
        

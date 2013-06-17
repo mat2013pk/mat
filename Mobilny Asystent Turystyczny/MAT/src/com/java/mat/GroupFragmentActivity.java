@@ -18,7 +18,7 @@ public class GroupFragmentActivity extends Fragment {
         if (container == null) {
             return null;
         }
-        interfejs = InterfejsDlaMapy.getInstance();
+     /*   interfejs = InterfejsDlaMapy.getInstance();
         
         
         ///testyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
@@ -26,7 +26,7 @@ public class GroupFragmentActivity extends Fragment {
     	znojomi.dodajPinezkeDoListy(new LatLng(50.045664,19.967217), "Tomek", "jojoj");
     	znojomi.dodajPinezkeDoListy(new LatLng(50.045664,20.967217), "Mateusz", "dota");
         
-    	
+    	*/
     	
         return (LinearLayout)inflater.inflate(R.layout.activity_tab03_grupa, container, false);
     }

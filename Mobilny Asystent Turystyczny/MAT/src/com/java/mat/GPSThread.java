@@ -21,10 +21,12 @@ public class GPSThread implements Runnable {
 
 	@Override
 	public void run() {
+		Log.d("user","nowy watek sledzacy");
 		while (GlobalSettings.getInstance().getUserLoggingStatus()) {
 			sendGPSLocation();
+			Log.d("user","watek sledzacy sobie dzia³am");
 			try {
-				Thread.sleep(20000);
+				Thread.sleep(15000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				Log.e("BLAD W SENDZIE", "NIE DZIALA WATEK");
