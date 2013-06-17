@@ -56,7 +56,7 @@ public class MarkerDialog {
 				id = Integer.parseInt(m.getSnippet());
 			}catch(Exception e){id = -1 ;}
 			if(id != -1)
-				if(SingletonInterfejsMapy.getInstance().getMiejsca().equal(Integer.parseInt(m.getSnippet())))
+				if(SingletonInterfejsMapy.getInstance().getMapInstance().getMiejscaSpotkan().equal(Integer.parseInt(m.getSnippet())))
 					selections[1] = true;
 				//if(m.getPosition().equals(matServer.getGroupPOI(adminMail).getPosition() ) )
 					//selections[1] = true;
@@ -139,7 +139,7 @@ public class MarkerDialog {
 						try{ id = Integer.parseInt(m.getSnippet()); }catch(Exception e){ id=-1; }
 						
 						if(id != -1)
-							if(SingletonInterfejsMapy.getInstance().getMiejsca().equal(id))
+							if(SingletonInterfejsMapy.getInstance().getMapInstance().getMiejscaSpotkan().equal(id))
 								Connection.getMatServer().removeGroupPOI(GlobalSettings.getInstance().getMail(), Integer.parseInt(m.getSnippet()));
 						//matServer.removeGroupPOI(Autoryzacja.getMail(), Integer.parseInt(m.getSnippet()));
 					}

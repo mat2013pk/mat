@@ -12,7 +12,8 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:text="@string/TEMP_imie"
+        
+        android:hint="imie"
         android:textColor="#000" >
 
         <requestFocus />
@@ -26,7 +27,8 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:text="@string/TEMP_nazwisko"
+        
+        android:hint="nazwisko"
         android:textColor="#000" />
 
     <EditText
@@ -36,7 +38,8 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textEmailAddress"
-        android:text="@string/TEMP_email"
+        
+        android:hint="email"
         android:background="@drawable/input"
         android:textColor="#000" />
 

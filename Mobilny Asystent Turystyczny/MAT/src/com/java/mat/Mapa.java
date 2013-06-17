@@ -1,5 +1,7 @@
 package com.java.mat;
 
+import java.util.ArrayList;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -8,10 +10,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -20,6 +24,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 
@@ -31,9 +37,15 @@ public class Mapa extends Fragment implements LocationListener{
 	private Miejsca miejsca;
 	private Pinezki znajomi; 				//pinezki z pozycja znajomych
 	private Trasa trasa;
+	private Pinezki listaMiejsc;
 	private InterfejsDlaMapy ustawienia;
 	MarkerDialog markerDialog;
 	
+	
+	
+	public void addMiejsce(MarkerOptions marker){ this.listaMiejsc.dodajPinezkeDoListy(marker); }
+	public void addMiejsca(ArrayList<MarkerOptions> markers){ this.listaMiejsc.dodajPinezkiDoListy(markers); }
+	public Pinezki getMiejscaSpotkan(){ return listaMiejsc; }
 	public Mapa(Fragment MapFragment)
 	{
 		this.wskNaFragment = MapFragment;
@@ -43,6 +55,7 @@ public class Mapa extends Fragment implements LocationListener{
 	    miejsca = new Miejsca(mapaGoogle);
 	    znajomi = new Pinezki(mapaGoogle, BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
 	    trasa = new Trasa(mapaGoogle);
+	    listaMiejsc = new Pinezki(mapaGoogle);
 		SingletonInterfejsMapy.getInstance().setGoogleMap(mapaGoogle);
 		SingletonInterfejsMapy.getInstance().setMapActivity(wskNaFragment);
 		SingletonInterfejsMapy.getInstance().setMapa(this);
@@ -91,7 +104,7 @@ public class Mapa extends Fragment implements LocationListener{
 		mapaGoogle.clear();
 		//wyrysowanie obiektow na nowo lub dorysowane aktualnych usuniece nie aktualnych
 		if(ustawienia.pinezki) pinezki.dodajPinezkiDoMapy();
-		if(ustawienia.pinezki) SingletonInterfejsMapy.getInstance().getMiejsca().dodajPinezkiDoMapy();
+		if(ustawienia.pinezki) listaMiejsc.dodajPinezkiDoMapy();
 		if(ustawienia.miejsca) miejsca.dodajMiejscaDoMapy();
 		if(ustawienia.znajomi) znajomi.dodajPinezkiDoMapy();
 		if(ustawienia.trasa) trasa.dodajTraseDoMapy();
@@ -124,7 +137,7 @@ public class Mapa extends Fragment implements LocationListener{
 	    			mapaGoogle.setMyLocationEnabled(true);
 	    			LocationManager lm = (LocationManager)wskNaFragment.getActivity().getSystemService(Activity.LOCATION_SERVICE);
 	    			String provider = lm.getBestProvider(new Criteria(), true);
-	    			
+	    			try{
 		    			if(provider == null){
 		    				this.onProviderDisabled(provider);
 		    			}
@@ -132,7 +145,14 @@ public class Mapa extends Fragment implements LocationListener{
 	    			Location loc = lm.getLastKnownLocation(provider);
 		    			if(loc != null){
 		    				this.onLocationChanged(loc);
-		    			}	
+		    			}
+	    			}catch(Exception e )
+	    			{
+	    				Log.d("user","provider"+e.toString());
+	    				Toast t = Toast.makeText(wskNaFragment.getActivity(), "W³¹cz lokalizacjê w ustwaieniach", Toast.LENGTH_SHORT);
+						t.show();
+						//wskNaFragment.getActivity().onBackPressed();
+	    			}
 	    		}
 	    	}
 		}
@@ -162,6 +182,7 @@ public class Mapa extends Fragment implements LocationListener{
 	@Override
 	public void onProviderDisabled(String provider) {//jesli nie znaleziono dostawcy
 		// TODO Auto-generated method stub
+		
 	}
 	@Override
 	public void onProviderEnabled(String provider) {

@@ -28,7 +28,28 @@ public class GPSThread implements Runnable {
 	public void run() {
 		Log.d("user", "nowy watek sledzacy");
 		while (GlobalSettings.getInstance().getUserLoggingStatus()) {
-			sendGPSLocation();
+			/*if(SingletonInterfejsMapy.getInstance().getMapInstance()!=null)
+			{
+				//pozycja z mapy
+	
+				sendGPSLocation(
+						GlobalSettings.getInstance().getHost()
+						+ "&function=periodicPackage" + "&email="
+						+ GlobalSettings.getInstance().getMail() + "&latitude="
+						+SingletonInterfejsMapy.getInstance().getGoogleMapInstance().getMyLocation().getLatitude()
+					    +"&longitude=" 
+						+ SingletonInterfejsMapy.getInstance().getGoogleMapInstance().getMyLocation().getLongitude()
+						);
+			}else{
+				 */
+				sendGPSLocation(
+						GlobalSettings.getInstance().getHost()
+						+ "&function=periodicPackage" + "&email="
+						+ GlobalSettings.getInstance().getMail() + "&latitude="
+						+ gps.getLatitude() + "&longitude=" + gps.getLongitude()
+						);
+			//}
+			
 			Log.d("user", "watek sledzacy sobie dzia³am");
 			try {
 				Thread.sleep(10000);
@@ -43,23 +64,16 @@ public class GPSThread implements Runnable {
 	/**
 	 * Function send actual GPS location
 	 */
-	private void sendGPSLocation() {
+	private void sendGPSLocation(String url) {
 		boolean status = false;
-		String url = GlobalSettings.getInstance().getHost()
-				+ "&function=periodicPackage" + "&email="
-				+ GlobalSettings.getInstance().getMail() + "&latitude="
-				+ gps.getLatitude() + "&longitude=" + gps.getLongitude();
+		
 		JSONObject data = Connection.connectToServer(url);
 		try {
-			Log.e("adres url ", url);
-			Log.e("status wiadomosci ", data.getString("message"));
-
+			//Log.e("adres url ", url);
+			//Log.e("status wiadomosci ", data.getString("message"));
+			Log.d("user","watek poz"+url);
 			if (data.getString("message") == "true") {
 				status = true;
-				if (mp != null) {
-					mp.release();
-				}
-				mp.start();
 			} else {
 				status = false;
 			}
@@ -68,6 +82,15 @@ public class GPSThread implements Runnable {
 			status = false;
 		}
 		GlobalSettings.getInstance().setMessageStatus(status);
+		if (status){
+			if (mp != null) {
+				mp.release();
+			}
+			mp.start();
+		} else {
+			mp.stop();
+		}
+
 	}
 
 }

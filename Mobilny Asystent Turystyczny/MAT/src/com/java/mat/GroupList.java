@@ -21,7 +21,7 @@ public class GroupList extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_tab03_grupa);
+		//setContentView(R.layout.activity_tab03_grupa);
 		
 		Button ok = (Button)findViewById(R.id.grupa_ok);
 		

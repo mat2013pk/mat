@@ -247,7 +247,8 @@ public class PlacesFragmentActivity extends Fragment {
         Spinner s = (Spinner) tmp.findViewById(R.id.spinner1);
         ArrayAdapter adapter = new ArrayAdapter(
         		this.getActivity(),
-        		android.R.layout.simple_spinner_item,
+        		//android.R.layout.simple_spinner_item,
+        		R.layout.moj_spiner,
         		array_spinner2);
       
         s.setAdapter(adapter);

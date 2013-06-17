@@ -4,17 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <SurfaceView
+        android:id="@+id/cpPreview"
         android:layout_weight="1"
-        android:drawSelectorOnTop="false" >
-        <!--
-        dynamiczne dodawanie elementow do listy:
-        http://stackoverflow.com/questions/4540754/add-dynamically-elements-to-a-listview-android
-        -->
-    </ListView>
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+    </SurfaceView>
     
     <Button
         android:id="@+id/grupa.ok"

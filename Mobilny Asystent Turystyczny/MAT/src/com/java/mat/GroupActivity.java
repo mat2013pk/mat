@@ -33,14 +33,14 @@ public class GroupActivity extends Activity {
 						IGroup group = (IGroup) new Group();
 						EditText name = (EditText) findViewById(R.id.action_group_name);
 						EditText pass = (EditText) findViewById(R.id.action_group_password);
-						if (!(GlobalSettings.getInstance().getGuardMail() == null)) {
+						if (!(GlobalSettings.getInstance().getGuideMail() == null)) {
 							Integer status = Integer.parseInt(group
 									.delUserFromGroup(GlobalSettings
 											.getInstance().getSecretKey(),
 											GlobalSettings.getInstance()
 													.getMail(), GlobalSettings
 													.getInstance()
-													.getGuardMail()));
+													.getGuideMail()));
 							if (status == 0) {
 								Log.e("DEL",
 										"Usunieto poprawnie -> create group");
@@ -93,15 +93,15 @@ public class GroupActivity extends Activity {
 									"Niezwalidowany adres email",
 									Toast.LENGTH_SHORT);
 						} else {
-							if (!(GlobalSettings.getInstance().getGuardMail() == null)
+							if (!(GlobalSettings.getInstance().getGuideMail() == null)
 									&& (GlobalSettings.getInstance()
-											.getGuardMail() != GlobalSettings
+											.getGuideMail() != GlobalSettings
 											.getInstance().getMail())) {
 								Integer status = Integer.parseInt(group
 										.delUserFromGroup(GlobalSettings
 												.getInstance().getSecretKey(),
 												GlobalSettings.getInstance()
-														.getGuardMail(),
+														.getGuideMail(),
 												GlobalSettings.getInstance()
 														.getMail()));
 								if (status == 0) {
@@ -112,7 +112,7 @@ public class GroupActivity extends Activity {
 											"NIE usunieto poprawnie -> join group");
 								}
 							} else if (GlobalSettings.getInstance()
-									.getGuardMail() == GlobalSettings
+									.getGuideMail() == GlobalSettings
 									.getInstance().getMail()) {
 								//startActivity(new Intent(GroupActivity.this, GroupList.class));
 								Log.e("TODO", "Wypisanie listy uzytkownikow z grupy");
@@ -126,7 +126,7 @@ public class GroupActivity extends Activity {
 													.toString()));
 
 							if (status == 0) {
-								GlobalSettings.getInstance().setGuardMail(
+								GlobalSettings.getInstance().setGuideMail(
 										email.getText().toString());
 								t = Toast.makeText(getApplicationContext(),
 										"Zosta³eœ dodany do grupy",

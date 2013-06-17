@@ -28,20 +28,20 @@ public static  Context cnt;
 		Button autoryzacja = (Button) findViewById(R.id.menu_autoryzacja);
 		Button mapa = (Button) findViewById(R.id.menu_nawigacja);
 		Button grupa = (Button) findViewById(R.id.menu_grupa);
-		Button miejsca = (Button) findViewById(R.id.menu_miejsca);
+		//Button miejsca = (Button) findViewById(R.id.menu_miejsca);
 		Button wiadomosci = (Button) findViewById(R.id.menu_wiadomosci);
-		Button aparat = (Button) findViewById(R.id.menu_aparat);
+		//Button aparat = (Button) findViewById(R.id.menu_aparat);
 		Button sos = (Button) findViewById(R.id.menu_sos);
 		Button faq = (Button) findViewById(R.id.menu_faq);
 		Button informacje = (Button) findViewById(R.id.menu_info);
-		Button ustawienia = (Button) findViewById(R.id.menu_ustawienia);
+		//Button ustawienia = (Button) findViewById(R.id.menu_ustawienia);
 		Button wyjscie = (Button) findViewById(R.id.menu_wylacz);
 
 		List<Button> buttonsToRelease = new ArrayList<Button>();
 		buttonsToRelease.add(grupa);
-		buttonsToRelease.add(miejsca);
+		//buttonsToRelease.add(miejsca);
 		buttonsToRelease.add(wiadomosci);
-		buttonsToRelease.add(aparat);
+	//	buttonsToRelease.add(aparat);
 		buttonsToRelease.add(sos);
 
 		for (Button b : buttonsToRelease) {
@@ -85,7 +85,7 @@ public static  Context cnt;
 			}
 		});
 
-		miejsca.setOnClickListener(new View.OnClickListener() {
+		/*miejsca.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -93,7 +93,7 @@ public static  Context cnt;
 
 			}
 		});
-
+*/
 		wiadomosci.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -107,12 +107,12 @@ public static  Context cnt;
 			}
 		});
 
-		aparat.setOnClickListener(new View.OnClickListener() {
+		/*aparat.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				
-				//Testy do listy uzytkownikow w grupie //
+			/*	//Testy do listy uzytkownikow w grupie //
 				IGroup test = (IGroup) new Group();
 				ArrayList<JSONObject> groupList = test.getListGroup(GlobalSettings
 						.getInstance().getSecretKey(), GlobalSettings
@@ -126,12 +126,12 @@ public static  Context cnt;
 						e.printStackTrace();
 					}
 				}
-				setContentView(R.layout.activity_tab03_grupa);
+				setContentView(R.layout.aparat);
 				//ListView lv = (ListView) findViewById(R.id.group_list);
 				//lv.setAdapter(new ArrayAdapter<String>(this, R.layout.activity_group_list, listContents);
 			}
 		});
-
+*/
 		sos.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -158,7 +158,7 @@ public static  Context cnt;
 			}
 		});
 
-		ustawienia.setOnClickListener(new View.OnClickListener() {
+	/*	ustawienia.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -166,7 +166,7 @@ public static  Context cnt;
 
 			}
 		});
-
+*/
 		wyjscie.setOnClickListener(new View.OnClickListener() {
 
 			@Override

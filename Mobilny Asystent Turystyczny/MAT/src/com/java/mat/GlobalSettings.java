@@ -13,8 +13,10 @@ public final class GlobalSettings {
     private int visibilityRadius = 0;
     private final String host = "http://mat.sofect.com/server.php?key=412fg68kw378";
     private final String secretKey = "412fg68kw378";
-    private String mail = "k@k.com";
-    private String guardMail = "k@k.com";
+    private String mail ;
+    private String guardMail ;
+    
+    
     
     /* getter/setter section */
     public boolean getUserLoggingStatus(){
@@ -73,10 +75,10 @@ public final class GlobalSettings {
 	public String getSecretKey() {
 		return secretKey;
 	}
-	public String getGuardMail() {
+	public String getGuideMail() {
 		return guardMail;
 	}
-	public void setGuardMail(String guardMail) {
+	public void setGuideMail(String guardMail) {
 		this.guardMail = guardMail;
 	}
 	public boolean isMessageStatus() {

@@ -55,7 +55,7 @@
             android:text="@string/menu_grupa"
             android:textColor="@drawable/button_menu_textcolor"
             android:layout_margin="1dp" />
-
+<!-- 
         <Button
             android:id="@+id/menu.miejsca"
             android:layout_width="wrap_content"
@@ -67,6 +67,19 @@
             android:text="@string/menu_miejsca"
             android:textColor="@drawable/button_menu_textcolor"
             android:layout_margin="1dp" />
+        -->
+        <Button
+            android:id="@+id/menu.sos"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/sos"
+            android:paddingTop="10dp"
+            android:text="@string/menu_sos"
+            android:textColor="@drawable/button_menu_textcolor"
+            android:layout_margin="1dp" />
+        
     </TableRow>
 
     <TableRow
@@ -87,7 +100,7 @@
             android:textColor="@drawable/button_menu_textcolor"
             android:layout_margin="1dp" />
 
-        <Button
+   <!--      <Button
             android:id="@+id/menu.aparat"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -98,58 +111,7 @@
             android:text="@string/menu_aparat"
             android:textColor="@drawable/button_menu_textcolor"
             android:layout_margin="1dp" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="20" >
-
-        <Button
-            android:id="@+id/menu.sos"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/button_menu"
-            android:drawablePadding="-10dp"
-            android:drawableTop="@drawable/sos"
-            android:paddingTop="10dp"
-            android:text="@string/menu_sos"
-            android:textColor="@drawable/button_menu_textcolor"
-            android:layout_margin="1dp" />
-
-        <Button
-            android:id="@+id/menu.ustawienia"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="1dp"
-            android:background="@drawable/button_menu"
-            android:drawablePadding="-10dp"
-            android:drawableTop="@drawable/ustawienia"
-            android:paddingTop="10dp"
-            android:text="@string/menu_ustawienia"
-            android:textColor="@drawable/button_menu_textcolor" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="20" >
-
-        <Button
-            android:id="@+id/menu.info"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="1dp"
-            android:background="@drawable/button_menu"
-            android:drawablePadding="-10dp"
-            android:drawableTop="@drawable/informacje"
-            android:paddingTop="10dp"
-            android:text="@string/menu_autorzy"
-            android:textColor="@drawable/button_menu_textcolor" />
-
+        --> 
         <Button
             android:id="@+id/menu.faq"
             android:layout_width="wrap_content"
@@ -161,15 +123,27 @@
             android:paddingTop="10dp"
             android:text="@string/menu_faq"
             android:textColor="@drawable/button_menu_textcolor" />
-
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow6"
+        android:id="@+id/tableRow4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="20" >
 
+<Button
+            android:id="@+id/menu.info"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/informacje"
+            android:paddingTop="10dp"
+            android:text="@string/menu_autorzy"
+            android:textColor="@drawable/button_menu_textcolor" />
+
+        
         <Button
             android:id="@+id/menu.wylacz"
             android:layout_width="wrap_content"
@@ -182,6 +156,31 @@
             android:text="@string/menu_wylacz"
             android:textColor="@drawable/button_menu_textcolor" />
 
+  
     </TableRow>
+
+  <!--   <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="20" >
+      <Button
+            android:id="@+id/menu.ustawienia"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:background="@drawable/button_menu"
+            android:drawablePadding="-10dp"
+            android:drawableTop="@drawable/ustawienia"
+            android:paddingTop="10dp"
+            android:text="@string/menu_ustawienia"
+            android:textColor="@drawable/button_menu_textcolor" />
+ 
+         
+        
+
+    </TableRow>
+
+-->
 
 </TableLayout>

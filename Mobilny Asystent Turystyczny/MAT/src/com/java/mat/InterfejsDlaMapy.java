@@ -13,7 +13,7 @@ public class InterfejsDlaMapy
 	protected Trasa.Mode trybTrasa;
 	protected Mapa mapa;
 	protected Fragment mapActivity;
-	private Pinezki listaMiejsc;
+	
 	private GoogleMap googleMap;
 	
 	
@@ -26,11 +26,11 @@ public class InterfejsDlaMapy
 		trasaWyznaczanie = false;
 		dodajPinezke = false;
 		trybTrasa = Trasa.Mode.walking;
-		listaMiejsc = new Pinezki(googleMap);
+		
 	}
 	
 	public GoogleMap getGoogleMapInstance(){ return googleMap; }
-	public void setGoogleMap(GoogleMap googleMap){ this.googleMap = googleMap; listaMiejsc.setGoogleMapInstance(googleMap); }
+	public void setGoogleMap(GoogleMap googleMap){ this.googleMap = googleMap;  }
 	
 	public Mapa getMapInstance(){ return mapa; }
 	public void setMapa(Mapa mapa){ this.mapa = mapa;}
@@ -40,9 +40,7 @@ public class InterfejsDlaMapy
 		}
 	public Fragment getMapActivity(){ return this.mapActivity; }
 	
-	public void addMiejsce(MarkerOptions marker){ this.listaMiejsc.dodajPinezkeDoListy(marker); }
-	public void addMiejsca(ArrayList<MarkerOptions> markers){ this.listaMiejsc.dodajPinezkiDoListy(markers); }
-	public Pinezki getMiejsca(){ return listaMiejsc; }
+
 	
 	public void setTrasa(boolean val)  { trasa = val;   }
 	public void setZnajomi(boolean val){ znajomi = val; }

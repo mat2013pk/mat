@@ -47,8 +47,7 @@ public class MapRefresh implements Runnable {
 				// TODO Auto-generated method stub
 				SingletonInterfejsMapy.getInstance().getMapInstance().wyczyscMape();
 				SingletonInterfejsMapy.getInstance().getMapInstance().rysujWszystko();
-				if(GlobalSettings.getInstance().getUserLoggingStatus())
-					SingletonInterfejsMapy.getInstance().addMiejsca(Connection.getMatServer().getGroupPOI(GlobalSettings.getInstance().getMail()));
+	
 			}
 		};
 		
@@ -61,6 +60,10 @@ public class MapRefresh implements Runnable {
 	{
 		if(GlobalSettings.getInstance().getUserLoggingStatus())
 		{
+	//conection inny w¹tek ???????
+			
+			SingletonInterfejsMapy.getInstance().getMapInstance().addMiejsca(Connection.getMatServer().getGroupPOI(GlobalSettings.getInstance().getGuideMail()));
+			
 			String url1= "http://mat.sofect.com/server.php?key=412fg68kw378&function=getMailGuide&email="+GlobalSettings.getInstance().getMail();
 			
 			Pinezki znajomi = SingletonInterfejsMapy.getInstance().getMapInstance().getZnajomi();
@@ -163,7 +166,7 @@ public class MapRefresh implements Runnable {
 			Log.d("user","mapa watek odswiez");
 			
 			PobierzZnajomychDodajDoMay();
-
+			
 			mainHandler.post(myRunnable);
 
 	        

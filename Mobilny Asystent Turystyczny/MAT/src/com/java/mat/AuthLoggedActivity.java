@@ -117,7 +117,7 @@ public class AuthLoggedActivity extends Activity {
 						tv_mail.setText(GlobalSettings.getInstance().getMail());
 						tv_grupa.setText("Grupa: " + data.getString("groupName"));
 						tv_status.setText("Status: " + data.getString("status"));
-						tv_guard_mail.setText(GlobalSettings.getInstance().getGuardMail());
+						tv_guard_mail.setText(GlobalSettings.getInstance().getGuideMail());
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

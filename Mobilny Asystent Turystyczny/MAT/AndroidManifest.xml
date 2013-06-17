@@ -78,58 +78,71 @@
         
         <activity
             android:name=".MenuActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         
         <activity
             android:name=".AuthNotloggedActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         
         <activity
             android:name=".AuthLoggedActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         
         <activity
             android:name=".TabholderActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         
         <activity
             android:name=".MapFragmentActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".NavigationFragmentActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".PlacesFragmentActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".SosActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".FaqActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".AutorsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".MessageActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".GroupActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.java.mat.GroupFragmentActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
 		

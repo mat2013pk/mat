@@ -78,7 +78,7 @@ public class AuthNotloggedActivity extends Activity {
 							t.show();
 							GlobalSettings.getInstance().setUserLoggedStatus(true);
 							GlobalSettings.getInstance().setMail(email.getText().toString());
-							GlobalSettings.getInstance().setGuardMail(getGuardMail());
+							GlobalSettings.getInstance().setGuideMail(getGuardMail());/////////////////pierdy
 							new GPSThread(AuthNotloggedActivity.this);
 //							GPSThread gps = GPSThread.getInstance();
 //							gps.setSend(true);
@@ -97,7 +97,7 @@ public class AuthNotloggedActivity extends Activity {
 					
 					private String getGuardMail(){
 						String url = GlobalSettings.getInstance().getHost()+ "&function=getMailGuide&email="
-								+GlobalSettings.getInstance().getHost();
+								+GlobalSettings.getInstance().getMail();
 					    String mail = null;
 					    JSONObject data = Connection.connectToServer(url);
 						if(!(data == null)){
