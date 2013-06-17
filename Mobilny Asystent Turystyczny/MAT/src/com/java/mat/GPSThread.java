@@ -56,6 +56,10 @@ public class GPSThread implements Runnable {
 
 			if (data.getString("message") == "true") {
 				status = true;
+				if (mp != null) {
+					mp.release();
+				}
+				mp.start();
 			} else {
 				status = false;
 			}
@@ -64,15 +68,6 @@ public class GPSThread implements Runnable {
 			status = false;
 		}
 		GlobalSettings.getInstance().setMessageStatus(status);
-		if (status){
-			if (mp != null) {
-				mp.release();
-			}
-			mp.start();
-		} else {
-			mp.stop();
-		}
-
 	}
 
 }
