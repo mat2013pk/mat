@@ -5,18 +5,25 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Handler;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class GPSThread implements Runnable {
 	private Thread t;
 	private GPSTracker gps;
 	Double longtitude;
 	Double latitude;
-
+	Context context;
 	private MediaPlayer mp;
 	private int soundId = R.raw.my_sound;
 
 	public GPSThread(Context m) {
+		context = m;
 		t = new Thread(this);
 		gps = new GPSTracker(m);
 		mp = MediaPlayer.create(MenuActivity.cnt, soundId);
@@ -72,24 +79,33 @@ public class GPSThread implements Runnable {
 			//Log.e("adres url ", url);
 			//Log.e("status wiadomosci ", data.getString("message"));
 			Log.d("user","watek poz"+url);
+			
 			if (data.getString("message") == "true") {
 				status = true;
+
+				Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+				Ringtone r = RingtoneManager.getRingtone(context.getApplicationContext(), notification);
+				r.play();
+			//	((Button) context.getApplicationContext().findViewById(R.id.menu_wiadomosci)).setBackgroundColor(#ff0033);
+	
+				
 			} else {
 				status = false;
+				
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 			status = false;
 		}
 		GlobalSettings.getInstance().setMessageStatus(status);
-		if (status){
+		/*if (status){
 			if (mp != null) {
 				mp.release();
 			}
 			mp.start();
 		} else {
 			mp.stop();
-		}
+		}*/
 
 	}
 
